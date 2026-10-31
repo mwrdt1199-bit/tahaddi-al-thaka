@@ -2,7 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101a35"><link rel="manifest" href="./manifest.webmanifest"><title>تحدّي الذكاء — V6 PRO</title>
+<meta name="theme-color" content="#101a35">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>تحدّي الذكاء — V6 PRO</title>
 <style>
 :root{--bg:#0b1224;--panel:#151f38;--panel2:#263653;--line:#405477;--gold:#fbbf24;--text:#f8fafc;--muted:#bdc9df;--green:#14543f;--red:#642b3c}
 *{box-sizing:border-box}body{margin:0;padding:20px 13px;min-height:100vh;background:radial-gradient(circle at top,#304879,#0b1224 68%);font-family:system-ui,sans-serif;color:var(--text)}
@@ -91,12 +95,12 @@ footer{letter-spacing:.4px}
 
 </style></head>
 <body><main>
-<div class="top"><strong>🧠 تحدّي الذكاء <small style="color:#fbbf24">V10 PRO</small></strong><span class="pill" id="level">اختر المستوى</span></div>
+<div class="top"><strong>🧠 تحدّي الذكاء <small style="color:#fbbf24">V7 ULTIMATE</small></strong><span class="pill" id="level">اختر المستوى</span></div>
 
 
 <section class="card center" id="start">
  <div class="big">🧩</div><h1>تحدّي الذكاء</h1>
- <p class="intro">اختر مستواك وافتح 100 مرحلة تدريجياً. لديك 3 قلوب في كل جولة، واجمع الإنجازات والعملات ونافس أصدقاءك على الجهاز نفسه.</p>
+ <p class="intro">اختر مستواك وافتح 100 مرحلة تدريجياً في كل مستوى، مع حفظ تقدمك ونجومك على هذا الجهاز.</p>
  <label for="player1">اسم اللاعب الأول</label><input class="field" id="player1" maxlength="16" value="اللاعب الأول">
  <div id="player2wrap" class="hidden"><label for="player2">اسم اللاعب الثاني</label><input class="field" id="player2" maxlength="16" value="اللاعب الثاني"></div>
  <div class="tools"><button class="utility" id="modeSingle">لاعب واحد</button><button class="utility" id="modeDuo">لاعبان بالتناوب</button></div>
@@ -122,7 +126,7 @@ footer{letter-spacing:.4px}
  <div class="stats">
   <div class="stat"><b id="score">0</b><span>النقاط</span></div><div class="stat"><b id="timer">20</b><span>الثواني</span></div><div class="stat"><b id="num">1/10</b><span>السؤال</span></div>
  </div>
- <div class="stats"><div class="stat"><b id="streak">0</b><span>إجابات متتالية</span></div><div class="stat"><b id="points">10</b><span>قيمة السؤال</span></div><div class="stat"><b id="lives">❤️❤️❤️</b><span>القلوب المتبقية</span></div></div>
+ <div class="stats"><div class="stat"><b id="streak">0</b><span>إجابات متتالية</span></div><div class="stat"><b id="points">10</b><span>قيمة السؤال</span></div></div>
  <div class="progress"><div class="bar" id="bar"></div></div>
  <p class="question" id="question"></p><div class="answers" id="answers"></div>
  <div class="feedback" id="feedback" aria-live="polite">اختر إجابة واحدة.</div>
@@ -149,7 +153,7 @@ footer{letter-spacing:.4px}
  <div class="tools"><button class="secondary" id="resetData">مسح السجل والإنجازات</button></div>
 </section>
 <section class="card" id="v7hub">
- <div class="rowline"><h3 class="panel-title">🌌 مركز V9 PRO</h3><span class="pill">الإصدار 7</span></div>
+ <div class="rowline"><h3 class="panel-title">🌌 مركز V7 ULTIMATE</h3><span class="pill">الإصدار 7</span></div>
  <p class="mini">عالمك الجديد: استكشف المناطق، طوّر مهاراتك، نافس أصدقاءك، واجمع المقتنيات.</p>
  <div class="feature-grid">
   <button class="feature-btn" data-v7="map">🗺️ خريطة العالم<small>مناطق ومراحل وزعماء</small></button>
@@ -165,51 +169,7 @@ footer{letter-spacing:.4px}
  <div id="v7Panel" class="review-item"><p class="mini">اختر إحدى ميزات V7 لفتح مركزها.</p></div>
  <p class="mini">تنبيه: حفظ V7 محلي على هذا الجهاز. اللعب عبر الإنترنت، الأصدقاء الحقيقيون، والبطولات العالمية تتطلب خادماً وحسابات موثّقة؛ هذه النسخة توفر نمطاً محلياً تجريبياً دون ادعاء اتصال عالمي.</p>
 </section>
-
-<section class="card" id="expansionHub">
- <h3 class="panel-title">🚀 إضافات الإصدار الجديد</h3>
- <p class="mini">أطوار محلية ومكافآت إضافية — النتائج تحفظ على هذا الجهاز وتُزامن مع حساب Firebase المجهول الحالي عند توفر الاتصال.</p>
- <div class="feature-grid">
-  <button class="feature-btn" id="survivalBtn">♾️ وضع البقاء<small>استمر حتى تنفد القلوب</small></button>
-  <button class="feature-btn" id="writeBtn">✍️ اكتب الإجابة<small>بدون خيارات جاهزة</small></button>
-  <button class="feature-btn" id="imageBtn">🧩 ألغاز الرموز<small>ألغاز بصرية بالإيموجي</small></button>
-  <button class="feature-btn" id="wheelBtn">🎡 عجلة الحظ<small>جائزة يومية</small></button>
-  <button class="feature-btn" id="lootBtn">🎁 صندوق الجوائز<small>افتح صندوقاً بالعملات</small></button>
-  <button class="feature-btn" id="hintBtn">💡 متجر التلميحات<small>اشترِ تلميحاً للجولة</small></button>
-  <button class="feature-btn" id="teamBtn">👥 سباق جماعي محلي<small>حتى 4 لاعبين بالتناوب</small></button>
- </div>
- <div id="expansionPanel" class="review-item"><p class="mini">اختر ميزة للبدء.</p></div>
-</section>
-
-<section class="card" id="v9ProgressHub">
- <h3 class="panel-title">⭐ مسار تطوّر اللاعب — V9</h3>
- <div class="stats"><div class="stat"><b id="v9Level">1</b><span>المستوى</span></div><div class="stat"><b id="v9Xp">0</b><span>نقاط الخبرة</span></div><div class="stat"><b id="v9Streak">0 🔥</b><span>أيام متتالية</span></div></div>
- <div class="progress"><div class="bar" id="v9XpBar"></div></div>
- <p class="mini" id="v9XpText">ابدأ اللعب لجمع الخبرة وفتح مستويات جديدة.</p>
- <div class="feature-grid">
-  <button class="feature-btn" id="v9ClaimBtn">🎁 مكافأة الدخول<small id="v9ClaimText">استلم هديتك اليومية</small></button>
-  <button class="feature-btn" id="v9PracticeBtn">🎯 تدريب الأخطاء<small>أعد حل الأسئلة التي أخطأت بها</small></button>
-  <button class="feature-btn" id="memoryChallengeBtn">🧠 اختبار الذاكرة<small>احفظ تسلسلاً يزداد صعوبة</small></button>
-  <button class="feature-btn" id="focusChallengeBtn">👁️ تحدّي التركيز<small>اكتشف الرمز المختلف بسرعة</small></button>
- </div>
- <div id="v9Message" class="review-item mini" aria-live="polite">كل جولة مكتملة تمنحك نقاط خبرة.</div>
-</section>
-
-<section class="card" id="v11Hub">
- <div class="rowline"><h3 class="panel-title">🌟 عالم V11 PRO</h3><span class="pill">تطوير شامل</span></div>
- <p class="mini">افتح العوالم، طوّر بطلك، جرّب 20 تحدياً مصغّراً واجمع المكافآت.</p>
- <div class="stats"><div class="stat"><b id="v11World">1 / 10</b><span>العالم</span></div><div class="stat"><b id="v11Hero">🧠</b><span>بطلك</span></div><div class="stat"><b id="v11HeroLevel">1</b><span>مستوى الشخصية</span></div></div>
- <div class="feature-grid">
-  <button class="feature-btn" id="v11MapBtn">🗺️ خريطة العوالم<small>مراحل وزعماء ومفاتيح</small></button>
-  <button class="feature-btn" id="v11HeroBtn">🦸 الأبطال والقدرات<small>اختر وطوّر بطلك</small></button>
-  <button class="feature-btn" id="v11ShopBtn">🛒 المتجر والصناديق<small>عناصر ومكافآت بالعملات</small></button>
-  <button class="feature-btn" id="v11MiniBtn">🧩 ألعاب الذكاء المصغّرة<small>20 تحدياً مختلفاً</small></button>
-  <button class="feature-btn" id="v11OnlineBtn">🌐 البطولات أونلاين<small>حالة الاتصال ومتطلبات اللعب الحقيقي</small></button>
- </div>
- <div id="v11Panel" class="review-item"><p class="mini">اختر إحدى الميزات لاستكشاف عالم V11.</p></div>
-</section>
-
-<footer>تحدّي الذكاء — V11 PRO</footer>
+<footer>تحدّي الذكاء — V7 ULTIMATE</footer>
 </main>
 <script>
 const banks={
@@ -237,39 +197,6 @@ hard:[
 ["مجموع زوايا شكل رباعي يساوي؟",["180°","270°","360°","540°"],2],["إذا كان 3 صنابير تملأ 3 خزانات في 3 ساعات، فكم ساعة تحتاج 6 صنابير لملء 6 خزانات بالمعدل نفسه؟",["3","6","9","12"],0],
 ["ما العدد الذي يقبل القسمة على 9؟",["124","135","142","151"],1],["إذا كان نصف عدد زائد 7 يساوي 19، فما العدد؟",["12","19","24","26"],2]
 ]};
-// بنك إضافي متنوع: يولّد مئات الأسئلة ذات إجابات محسوبة لكل مستوى.
-function addGeneratedQuestions(level){
- const bank=banks[level];
- const base=level==="easy"?2:level==="medium"?12:25;
- const span=level==="easy"?220:level==="medium"?220:220;
- function add(q,a,step){
-  if(bank.some(x=>x[0]===q))return;
-  const vals=[a-step*2,a-step,a,a+step];
-  const shift=(bank.length*7)%4;
-  const opts=vals.slice(shift).concat(vals.slice(0,shift));
-  bank.push([q,opts.map(String),opts.indexOf(a)]);
- }
- for(let i=1;i<=span;i++){
-  const x=base+i, y=base+((i*7)%span)+1;
-  add(`ما ناتج ${x} + ${y}؟`,x+y,1);
-  add(`ما ناتج ${x+y+10} - ${x}؟`,y+10,2);
-  add(`ما ناتج ${x} × ${(i%8)+2}؟`,x*((i%8)+2),Math.max(2,(i%5)+1));
-  const n=base+i;
-  add(`ما العدد التالي في النمط: ${n}، ${n+3}، ${n+6}، ${n+9}، ؟`,n+12,3);
-  add(`ما ضعف العدد ${n}؟`,n*2,2);
- }
-}
-["easy","medium","hard"].forEach(addGeneratedQuestions);
-function selectQuestions(pool,count,scope){
- const key="iqQuestionHistoryV1", data=(()=>{try{return JSON.parse(localStorage.getItem(key)||"{}")}catch{return {}}})();
- let used=Array.isArray(data[scope])?data[scope]:[];
- let fresh=pool.filter(q=>!used.includes(q[0]));
- if(fresh.length<count){used=[];fresh=pool.slice();}
- const chosen=shuffle(fresh).slice(0,count);
- data[scope]=used.concat(chosen.map(q=>q[0]));
- try{localStorage.setItem(key,JSON.stringify(data))}catch{}
- return chosen;
-}
 const cfg={easy:{name:"سهل",time:20,points:10},medium:{name:"متوسط",time:25,points:15},hard:{name:"صعب",time:30,points:20}};
 const $=id=>document.getElementById(id);
 let diff="easy",mode=1,players=["اللاعب الأول","اللاعب الثاني"],turn=0,qs=[],idx=0,scores=[0,0],streak=0,t=20,timer=null,locked=false,sound=true;
@@ -277,7 +204,6 @@ const storeKey="iqChallengeV6";
 const legacyKey="iqChallengeV5";
 let runType="stage",questionLimit=10,runTime=20,runLabel="المرحلة";
 let mistakes=[];
-let lives=3;
 let selectedStage=1;
 function freshData(){return {best:{},board:[],achievements:[],totalPoints:0,coins:0,ownedThemes:["gold"],ownedCharacters:["🧠"],theme:"gold",character:"🧠",dailyDate:"",dailyStreak:0,mistakes:[],titles:[],stages:{easy:{unlocked:1,stars:{}},medium:{unlocked:1,stars:{}},hard:{unlocked:1,stars:{}}}}}
 function getData(){try{let d=JSON.parse(localStorage.getItem(storeKey));if(!d){const old=JSON.parse(localStorage.getItem(legacyKey)||localStorage.getItem("iqChallengeV4")||"null");d=old||freshData()}d=d||freshData();d.best=d.best||{};d.board=d.board||[];d.achievements=d.achievements||[];d.totalPoints=d.totalPoints||0;d.coins=d.coins||0;d.ownedThemes=d.ownedThemes||["gold"];d.ownedCharacters=d.ownedCharacters||["🧠"];d.theme=d.theme||"gold";d.character=d.character||"🧠";d.mistakes=d.mistakes||[];d.titles=d.titles||[];d.dailyDate=d.dailyDate||"";d.dailyStreak=d.dailyStreak||0;d.stages=d.stages||freshData().stages;for(const k of ["easy","medium","hard"]){d.stages[k]=d.stages[k]||{unlocked:1,stars:{}};d.stages[k].unlocked=Math.max(1,Math.min(100,d.stages[k].unlocked||1));d.stages[k].stars=d.stages[k].stars||{}}return d}catch{return freshData()}}
@@ -295,15 +221,15 @@ function renderStageGrid(){let d=getData(),p=d.stages[diff],unlocked=p.unlocked|
 document.querySelectorAll(".diff").forEach(b=>b.onclick=()=>{diff=b.dataset.diff;document.querySelectorAll(".diff").forEach(x=>x.classList.toggle("selected",x===b));$("level").textContent="المستوى: "+cfg[diff].name;selectedStage=1;refreshHome()});
 $("modeSingle").onclick=()=>{mode=1;$("player2wrap").classList.add("hidden");$("modeSingle").style.borderColor="var(--gold)";$("modeDuo").style.borderColor="var(--line)"};
 $("modeDuo").onclick=()=>{mode=2;$("player2wrap").classList.remove("hidden");$("modeDuo").style.borderColor="var(--gold)";$("modeSingle").style.borderColor="var(--line)"};
-function start(){runType="stage";questionLimit=selectedStage%10===0?5:10;runTime=selectedStage%10===0?15:cfg[diff].time;runLabel=selectedStage%10===0?"مرحلة الزعيم":"المرحلة";clearInterval(timer);let progress=getData().stages[diff];if(selectedStage>(progress.unlocked||1)){selectedStage=progress.unlocked||1;renderStageGrid();return}players=[$("player1").value.trim()||"اللاعب الأول",$("player2").value.trim()||"اللاعب الثاني"];turn=0;qs=selectQuestions(selectedStage%10===0?banks[diff].concat(banks.hard):banks[diff],questionLimit,selectedStage%10===0?diff+"_boss":diff);idx=0;mistakes=[];lives=3;scores=[0,0];streak=0;$("score").textContent="0";$("streak").textContent="0";show("game");$("extras").classList.add("hidden");if(runLabel==="مرحلة الزعيم")$("turnName").textContent="👑 مواجهة الزعيم — المرحلة "+selectedStage;render()}
-function render(){locked=false;$ ("lives").textContent="❤️".repeat(lives)+"🖤".repeat(3-lives);if(runType!=="speed"||idx===0)t=runTime;$("timer").classList.remove("urgent");$("timer").textContent=t;$("num").textContent=(idx+1)+"/"+questionLimit;$("bar").style.width=(idx/questionLimit*100)+"%";$("question").textContent=qs[idx][0];$("feedback").textContent="اختر إجابة واحدة.";$("feedback").className="feedback"; $("next").classList.add("hidden");$("points").textContent=runType==="speed"?"متغير":cfg[diff].points;$("turnName").textContent=runLabel==="مرحلة الزعيم"?"👑 مواجهة الزعيم — المرحلة "+selectedStage:runType==="daily"?"📅 التحدي اليومي":runType==="speed"?"⚡ طور السرعة":mode===2?"دور: "+players[turn]:"اللاعب: "+players[0];$("score").textContent=mode===2?scores[0]+" - "+scores[1]:scores[0];$("streak").textContent=streak;$("answers").innerHTML="";
+function start(){runType="stage";questionLimit=selectedStage%10===0?5:10;runTime=selectedStage%10===0?15:cfg[diff].time;runLabel=selectedStage%10===0?"مرحلة الزعيم":"المرحلة";clearInterval(timer);let progress=getData().stages[diff];if(selectedStage>(progress.unlocked||1)){selectedStage=progress.unlocked||1;renderStageGrid();return}players=[$("player1").value.trim()||"اللاعب الأول",$("player2").value.trim()||"اللاعب الثاني"];turn=0;qs=shuffle(selectedStage%10===0?banks[diff].concat(banks.hard):banks[diff]).slice(0,questionLimit);idx=0;mistakes=[];scores=[0,0];streak=0;$("score").textContent="0";$("streak").textContent="0";show("game");$("extras").classList.add("hidden");if(runLabel==="مرحلة الزعيم")$("turnName").textContent="👑 مواجهة الزعيم — المرحلة "+selectedStage;render()}
+function render(){locked=false;if(runType!=="speed"||idx===0)t=runTime;$("timer").classList.remove("urgent");$("timer").textContent=t;$("num").textContent=(idx+1)+"/"+questionLimit;$("bar").style.width=(idx/questionLimit*100)+"%";$("question").textContent=qs[idx][0];$("feedback").textContent="اختر إجابة واحدة.";$("feedback").className="feedback"; $("next").classList.add("hidden");$("points").textContent=runType==="speed"?"متغير":cfg[diff].points;$("turnName").textContent=runLabel==="مرحلة الزعيم"?"👑 مواجهة الزعيم — المرحلة "+selectedStage:runType==="daily"?"📅 التحدي اليومي":runType==="speed"?"⚡ طور السرعة":mode===2?"دور: "+players[turn]:"اللاعب: "+players[0];$("score").textContent=mode===2?scores[0]+" - "+scores[1]:scores[0];$("streak").textContent=streak;$("answers").innerHTML="";
 qs[idx][1].forEach((a,n)=>{let b=document.createElement("button");b.style.setProperty("--i",n);b.className="answer";b.textContent=a;b.onclick=()=>answer(n);$("answers").appendChild(b)});
 if(runType!=="speed"||idx===0){clearInterval(timer);timer=setInterval(()=>{t--;$("timer").textContent=t;$("timer").classList.toggle("urgent",t<=5);if(t<=0){if(runType==="speed")finish();else answer(-1)}},1000)}}
 function explainQuestion(q,right){if(q.includes("العدد التالي")||q.includes("النمط")||q.includes("أكمل"))return "لاحظ النمط بين الأعداد؛ الإجابة الصحيحة تكمل التسلسل وفق القاعدة نفسها.";if(q.includes("نصف عدد")||q.includes("نصف العدد"))return "اعكس العملية الحسابية: أزل العدد المضاف أولاً ثم اضرب الناتج في اثنين.";if(q.includes("زوايا")||q.includes("زاوية"))return "تذكّر القاعدة الهندسية المرتبطة بعدد أضلاع الشكل.";if(q.includes("اليوم"))return "احسب الأيام المتبقية بعد تقسيم العدد على 7؛ أيام الأسبوع تتكرر كل سبعة أيام.";return "الإجابة الصحيحة هي «"+right+"». راجع المعطيات واستبعد الخيارات التي لا تحقق الشرط."}
 function answer(n){if(locked)return;locked=true;if(runType!=="speed")clearInterval(timer);let right=qs[idx][2];[...$("answers").children].forEach((b,k)=>{b.disabled=true;if(k===right)b.classList.add("correct");else if(k===n)b.classList.add("wrong")});
-if(n===right){let basePoints=runType==="speed"?5:cfg[diff].points;let skillBonus=(typeof v7Data==="function"?v7Data().skills.focus:0);scores[turn]+=basePoints+Math.round(basePoints*.05*skillBonus);streak++;$("feedback").textContent="إجابة صحيحة! ممتاز 🎉 التفسير: "+explainQuestion(qs[idx][0],qs[idx][1][right]);$("feedback").className="feedback good";beep(true)}else{streak=0;lives=Math.max(0,lives-1);$("lives").textContent="❤️".repeat(lives)+"🖤".repeat(3-lives);mistakes.push({q:qs[idx][0],chosen:n<0?"انتهى الوقت":qs[idx][1][n],correct:qs[idx][1][right],explain:qs[idx][3]||explainQuestion(qs[idx][0],qs[idx][1][right])});$("feedback").textContent=(n<0?"انتهى الوقت! ⏰":"إجابة غير صحيحة.")+" الصحيح: "+qs[idx][1][right]+" — "+explainQuestion(qs[idx][0],qs[idx][1][right]);$("feedback").className="feedback bad";beep(false)}
-$("score").textContent=mode===2?scores[0]+" - "+scores[1]:scores[0];$("streak").textContent=streak;$("next").textContent=(idx===questionLimit-1||lives===0)?"عرض النتيجة":"السؤال التالي";$("next").classList.remove("hidden")}
-function next(){if(lives===0||idx>=questionLimit-1){finish();return}if(mode===2)turn=1-turn;idx++;render()}
+if(n===right){let basePoints=runType==="speed"?5:cfg[diff].points;let skillBonus=(typeof v7Data==="function"?v7Data().skills.focus:0);scores[turn]+=basePoints+Math.round(basePoints*.05*skillBonus);streak++;$("feedback").textContent="إجابة صحيحة! ممتاز 🎉 التفسير: "+explainQuestion(qs[idx][0],qs[idx][1][right]);$("feedback").className="feedback good";beep(true)}else{streak=0;mistakes.push({q:qs[idx][0],chosen:n<0?"انتهى الوقت":qs[idx][1][n],correct:qs[idx][1][right],explain:qs[idx][3]||explainQuestion(qs[idx][0],qs[idx][1][right])});$("feedback").textContent=(n<0?"انتهى الوقت! ⏰":"إجابة غير صحيحة.")+" الصحيح: "+qs[idx][1][right]+" — "+explainQuestion(qs[idx][0],qs[idx][1][right]);$("feedback").className="feedback bad";beep(false)}
+$("score").textContent=mode===2?scores[0]+" - "+scores[1]:scores[0];$("streak").textContent=streak;$("next").textContent=idx===questionLimit-1?"عرض النتيجة":"السؤال التالي";$("next").classList.remove("hidden")}
+function next(){if(mode===2)turn=1-turn;idx++;if(idx>=questionLimit){finish();return}render()}
 function celebrate(){const colors=["#fbbf24","#60a5fa","#34d399","#f472b6","#c4b5fd"];for(let i=0;i<46;i++){const el=document.createElement("i");el.className="confetti";el.style.left=(Math.random()*100)+"vw";el.style.background=colors[i%colors.length];el.style.setProperty("--dx",(Math.random()*220-110)+"px");el.style.setProperty("--dur",(2+Math.random()*1.8)+"s");el.style.setProperty("--rot",(Math.random()*180)+"deg");document.body.appendChild(el);setTimeout(()=>el.remove(),4200)}}
 function finish(){clearInterval(timer);$("timer").classList.remove("urgent");$("bar").style.width="100%";let total=scores[0]+scores[1],d=getData(),max=runType==="speed"?questionLimit*5:cfg[diff].points*questionLimit;
 let percent=Math.round((scores[0]/max)*100),passed=mode===1&&runType==="stage"&&percent>=(selectedStage%10===0?80:60),stars=percent>=90?3:percent>=70?2:percent>=60?1:0;
@@ -320,7 +246,7 @@ $("recordText").textContent=runType==="daily"?"أكملت التحدي اليو�
 function renderExtras(d=getData()){let defs=[["first","🌟 أول نقاط","أكمل جولة واحصل على نقاط"],["expert","🏆 عقل لامع","احصل على 80% أو أكثر"],["streak","🔥 سلسلة مميزة","أجب عن 5 أسئلة متتالية"],["brave","⚡ قلب شجاع","حقق نصف النقاط في المستوى الصعب"]];$("achievements").innerHTML=defs.map(x=>`<div class="achievement ${d.achievements.includes(x[0])?"":"locked"}"><b>${x[1]}</b><div class="mini">${x[2]}</div></div>`).join("");
 $("leaderboard").innerHTML=d.board.length?`<table><thead><tr><th>#</th><th>اللاعب</th><th>النقاط</th><th>المستوى</th></tr></thead><tbody>${d.board.map((r,i)=>`<tr><td>${i+1}</td><td>${escapeHTML(r.name)}</td><td>${r.score}</td><td>${r.diff}</td></tr>`).join("")}</tbody></table>`:"<p class='mini'>لا توجد نتائج محفوظة بعد. أكمل أول جولة لتظهر هنا.</p>"}
 
-function beginSpecial(type){clearInterval(timer);mode=1;runType=type;questionLimit=type==="daily"?5:10;runTime=type==="speed"?60:cfg[diff].time;runLabel=type==="daily"?"التحدي اليومي":"طور السرعة";players=[$("player1").value.trim()||"اللاعب الأول","اللاعب الثاني"];turn=0;qs=selectQuestions(banks[diff].concat(banks.medium,banks.hard),questionLimit,"special_"+diff);idx=0;scores=[0,0];streak=0;mistakes=[];lives=3;$("score").textContent="0";$("streak").textContent="0";$("turnName").textContent=type==="daily"?"📅 التحدي اليومي":"⚡ طور السرعة";show("game");$("extras").classList.add("hidden");if(runLabel==="مرحلة الزعيم")$("turnName").textContent="👑 مواجهة الزعيم — المرحلة "+selectedStage;render()}
+function beginSpecial(type){clearInterval(timer);mode=1;runType=type;questionLimit=type==="daily"?5:10;runTime=type==="speed"?60:cfg[diff].time;runLabel=type==="daily"?"التحدي اليومي":"طور السرعة";players=[$("player1").value.trim()||"اللاعب الأول","اللاعب الثاني"];turn=0;qs=shuffle(banks[diff].concat(banks.medium,banks.hard)).slice(0,questionLimit);idx=0;scores=[0,0];streak=0;mistakes=[];$("score").textContent="0";$("streak").textContent="0";$("turnName").textContent=type==="daily"?"📅 التحدي اليومي":"⚡ طور السرعة";show("game");$("extras").classList.add("hidden");if(runLabel==="مرحلة الزعيم")$("turnName").textContent="👑 مواجهة الزعيم — المرحلة "+selectedStage;render()}
 function openReview(){let d=getData();let list=d.mistakes.slice(0,12);$("mistakeReview").innerHTML=list.length?list.map((m,i)=>`<div class="review-item"><b>${i+1}. ${escapeHTML(m.q)}</b><div class="mini" style="color:#fda4af">إجابتك: ${escapeHTML(m.chosen)}</div><div class="mini" style="color:#6ee7b7">الصحيح: ${escapeHTML(m.correct)}</div><div class="mini">💡 ${escapeHTML(m.explain)}</div></div>`).join(""):"<p class='mini'>رائع! لا توجد أخطاء محفوظة بعد.</p>";$("mistakeReview").scrollIntoView({behavior:"smooth",block:"center"})}
 const shop=[{type:"theme",id:"blue",name:"ثيم أزرق",cost:40,preview:"🔵"},{type:"theme",id:"purple",name:"ثيم بنفسجي",cost:40,preview:"🟣"},{type:"theme",id:"green",name:"ثيم زمردي",cost:40,preview:"🟢"},{type:"character",id:"🦊",name:"الثعلب الذكي",cost:60,preview:"🦊"},{type:"character",id:"🤖",name:"الروبوت",cost:60,preview:"🤖"},{type:"character",id:"🦉",name:"البومة",cost:80,preview:"🦉"}];
 function openShop(){let d=getData();let html=shop.map(x=>{let owned=x.type==="theme"?d.ownedThemes.includes(x.id):d.ownedCharacters.includes(x.id);return `<div class="shop-item"><div style="font-size:30px">${x.preview}</div><b>${x.name}</b><div class="coin">${x.cost} 🪙</div><button class="${owned?"utility":"primary"}" data-buy="${x.type}:${x.id}" ${owned?"disabled":""}>${owned?"مملوك":"شراء"}</button></div>`}).join("");let w=document.createElement("section");w.className="card";w.id="shopModal";w.innerHTML=`<div class="rowline"><h3 class="panel-title">🛍️ متجر المكافآت</h3><b class="coin">${d.coins} 🪙</b></div><div class="shop-grid">${html}</div><button class="secondary" id="closeShop" style="width:100%;margin-top:12px">إغلاق المتجر</button>`;let old=$("shopModal");if(old)old.remove();$("extras").after(w);w.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>buyItem(b.dataset.buy));$("closeShop").onclick=()=>w.remove();w.scrollIntoView({behavior:"smooth"})}
@@ -340,7 +266,7 @@ $("themeGold").onclick=()=>chooseTheme("gold");$("themeBlue").onclick=()=>choose
 refreshHome();$("extras").classList.remove("hidden");$("modeSingle").style.borderColor="var(--gold)";
 </script>\n
 <script>
-/* V9 PRO: local progression systems layered over V6 */
+/* V7 ULTIMATE: local progression systems layered over V6 */
 const v7Key="iqChallengeV7";
 function v7Fresh(){return {wins:0,played:0,correct:0,answered:0,duels:[],friends:[],skills:{focus:0,stamina:0,insight:0},skillPoints:0,collectibles:[],dailyClaim:"",weekKey:"",weeklyScore:0,weeklyRuns:0,missions:{daily:{},weekly:{}},lastDay:"",lastWeek:"",bossWins:0}}
 function v7Data(){let d;try{d=JSON.parse(localStorage.getItem(v7Key)||"null")}catch{};if(!d)d=v7Fresh();let f=v7Fresh();for(let k in f)if(d[k]===undefined)d[k]=f[k];d.skills=Object.assign(f.skills,d.skills||{});d.missions=Object.assign(f.missions,d.missions||{});d.missions.daily=d.missions.daily||{};d.missions.weekly=d.missions.weekly||{};return d}
@@ -364,7 +290,7 @@ function v7Open(which){({map:v7RenderMap,tournament:v7RenderTournament,skills:v7
 document.querySelectorAll("[data-v7]").forEach(b=>b.addEventListener("click",()=>v7Open(b.dataset.v7)));
 /* Track completed sessions without changing the original V6 scoring flow. */
 const v6Finish=finish;
-finish=function(){let before=getData().totalPoints;v6Finish();let d=v7EnsurePeriods(v7Data()),g=getData(),answered=Math.min(questionLimit,idx+1),rightCount=Math.max(0,answered-mistakes.length);d.played++;d.answered+=answered;d.correct+=rightCount;d.wins+=((runType==="stage"&&mode===1&&g.stages[diff].stars[selectedStage])?1:0);if(runType==="stage"&&mode===1&&selectedStage%10===0&&g.stages[diff].stars[selectedStage])d.bossWins++;if(mode===2){d.duels.push({a:players[0],b:players[1],score:scores.slice(),date:todayKey()});d.duels=d.duels.slice(-30)}d.skillPoints+=((runType==="stage"&&mode===1&&g.stages[diff].stars[selectedStage])?1:0);d.missions.daily.plays=(d.missions.daily.plays||0)+1;d.missions.daily.correct=(d.missions.daily.correct||0)+rightCount;d.missions.weekly.runs=(d.missions.weekly.runs||0)+1;d.missions.weekly.points=(d.missions.weekly.points||0)+scores.reduce((a,b)=>a+b,0);if(streak>=3)d.missions.daily.streak=1;d.weeklyRuns++;d.weeklyScore+=scores.reduce((a,b)=>a+b,0);v7Save(d)};
+finish=function(){let before=getData().totalPoints;v6Finish();let d=v7EnsurePeriods(v7Data()),g=getData(),rightCount=Math.max(0,questionLimit-mistakes.length),answered=questionLimit;d.played++;d.answered+=answered;d.correct+=rightCount;d.wins+=((runType==="stage"&&mode===1&&g.stages[diff].stars[selectedStage])?1:0);if(runType==="stage"&&mode===1&&selectedStage%10===0&&g.stages[diff].stars[selectedStage])d.bossWins++;if(mode===2){d.duels.push({a:players[0],b:players[1],score:scores.slice(),date:todayKey()});d.duels=d.duels.slice(-30)}d.skillPoints+=((runType==="stage"&&mode===1&&g.stages[diff].stars[selectedStage])?1:0);d.missions.daily.plays=(d.missions.daily.plays||0)+1;d.missions.daily.correct=(d.missions.daily.correct||0)+rightCount;d.missions.weekly.runs=(d.missions.weekly.runs||0)+1;d.missions.weekly.points=(d.missions.weekly.points||0)+scores.reduce((a,b)=>a+b,0);if(streak>=3)d.missions.daily.streak=1;d.weeklyRuns++;d.weeklyScore+=scores.reduce((a,b)=>a+b,0);v7Save(d)};
 /* Improve the boss identity: every tenth stage gets a dedicated title and reward label. */
 const v6Begin=beginSpecial;
 beginSpecial=function(type){v6Begin(type);if(type==="tournament"){$("turnName").textContent="🏆 جولة البطولة الأسبوعية";runType="tournament"}};
@@ -373,68 +299,8 @@ start=function(){v6Start();if(runType==="stage"){let d=v7Data();if(d.skills.stam
 /* Insight skill adds tailored coaching to the review panel. */
 const v6Review=openReview;
 openReview=function(){v6Review();let level=v7Data().skills.insight||0;if(level){let tip=document.createElement("p");tip.className="mini";tip.textContent="💡 بصيرة المستوى "+level+": حاول تحديد نوع السؤال أولاً، ثم استبعد الخيارات التي تخالف المعطيات قبل اختيار الإجابة.";$("mistakeReview").prepend(tip)}};
-
-/* V9 PRO: local gameplay modes and reward systems. */
-const visualRiddles=[
- ["🌞 + 🌻 = ؟",["الربيع","الشمس","الزهرة","الليل"],2],
- ["🐝 + 🍯 = ؟",["عسل","حليب","ماء","خبز"],0],
- ["🌧️ + ☂️ = ؟",["ثلج","مطر","شمس","رياح"],1],
- ["🐟 + 🌊 = ؟",["صحراء","غابة","بحر","مدينة"],2],
- ["🌙 + ⭐ = ؟",["السماء ليلاً","قاع البحر","الصباح","الغابة"],0]
-];
-const extraKnowledge=[
- ["ما عاصمة اليابان؟",["بكين","طوكيو","سيول","بانكوك"],1],
- ["كم ضلعاً للمربع؟",["3","4","5","6"],1],
- ["أي عضو يضخ الدم؟",["الرئة","الكبد","القلب","المعدة"],2],
- ["ما ناتج 9 × 7؟",["56","63","72","79"],1],
- ["أي كوكب يُعرف بالكوكب الأحمر؟",["الزهرة","المريخ","زحل","عطارد"],1],
- ["ما أكبر محيط على الأرض؟",["الأطلسي","الهندي","المتجمد","الهادئ"],3],
- ["ما ناتج 144 ÷ 12؟",["10","11","12","14"],2],
- ["أي حاسة ترتبط بالأذن؟",["الشم","السمع","البصر","التذوق"],1]
-];
-function expansionPanel(html){$("expansionPanel").innerHTML=html;$("expansionPanel").scrollIntoView({behavior:"smooth",block:"nearest"})}
-function wheelPrize(){let d=getData(),today=todayKey();if(d.wheelDate===today){expansionPanel('<b>🎡 استخدمت عجلة اليوم</b><p class="mini">ارجع غداً لتحصل على فرصة جديدة.</p>');return}let prizes=[{label:"10 عملات",coins:10},{label:"20 عملة",coins:20},{label:"5 عملات",coins:5},{label:"تلميح مجاني",hints:1},{label:"40 عملة",coins:40}];let prize=prizes[Math.floor(Math.random()*prizes.length)];d.wheelDate=today;d.coins=(d.coins||0)+(prize.coins||0);d.hints=(d.hints||0)+(prize.hints||0);saveData(d);refreshHome();expansionPanel(`<div style="font-size:42px">🎉</div><b>الجائزة: ${prize.label}</b><p class="mini">تمت إضافة جائزتك إلى رصيدك.</p>`)}
-function openLoot(){let d=getData();if((d.coins||0)<25){expansionPanel('<b>🎁 الصندوق يحتاج 25 عملة</b><p class="mini">أكمل المراحل لجمع المزيد من العملات.</p>');return}d.coins-=25;let prizes=[{label:"15 عملة",coins:15},{label:"40 عملة",coins:40},{label:"تلميحان",hints:2},{label:"شارة الحظ",badge:"luck"},{label:"شخصية البومة 🦉",character:"🦉"}];let prize=prizes[Math.floor(Math.random()*prizes.length)];d.coins+=prize.coins||0;d.hints=(d.hints||0)+(prize.hints||0);d.secretBadges=d.secretBadges||[];if(prize.badge&&!d.secretBadges.includes(prize.badge))d.secretBadges.push(prize.badge);if(prize.character){d.ownedCharacters=d.ownedCharacters||["🧠"];if(!d.ownedCharacters.includes(prize.character))d.ownedCharacters.push(prize.character)}saveData(d);refreshHome();expansionPanel(`<div style="font-size:42px">🎁✨</div><b>حصلت على: ${prize.label}</b><p class="mini">تم تحديث مجموعتك ورصيدك.</p>`)}
-function buyHint(){let d=getData();if((d.coins||0)<8){expansionPanel('<b>التلميح يكلف 8 عملات</b><p class="mini">رصيدك غير كافٍ حالياً.</p>');return}d.coins-=8;d.hints=(d.hints||0)+1;saveData(d);refreshHome();expansionPanel(`<b>💡 أصبح لديك ${d.hints} تلميح</b><p class="mini">أثناء السؤال اضغط زر التلميح لإظهار الإجابة الصحيحة.</p>`)}
-function useHint(){let d=getData();if(!qs[idx])return;if((d.hints||0)<1){alert('لا يوجد تلميح. اشترِ من متجر التلميحات.');return}d.hints--;saveData(d);let right=qs[idx][2];[...$("answers").children].forEach((b,k)=>{if(k===right){b.classList.add('correct');b.style.outline='3px solid #fbbf24'}});$("feedback").textContent='💡 التلميح كشف لك الإجابة الصحيحة.';}
-function beginExpansion(type){clearInterval(timer);mode=1;runType=type;runLabel=({survival:'وضع البقاء',write:'اكتب الإجابة',image:'ألغاز الرموز',team:'سباق جماعي'})[type]||type;let pool=type==='image'?visualRiddles: type==='team'?banks[diff].concat(extraKnowledge):banks[diff].concat(banks.medium,banks.hard,extraKnowledge);questionLimit=type==='survival'?30:type==='team'?12:10;runTime=type==='survival'?25:cfg[diff].time;players=type==='team'?[($('teamA')?.value||'اللاعب 1'),($('teamB')?.value||'اللاعب 2'),($('teamC')?.value||'اللاعب 3'),($('teamD')?.value||'اللاعب 4')]:[$('player1').value.trim()||'اللاعب'];turn=0;qs=selectQuestions(pool,questionLimit,'exp_'+type+'_'+diff);idx=0;scores=[0,0];streak=0;mistakes=[];lives=3;$('score').textContent='0';$('streak').textContent='0';show('game');$('extras').classList.add('hidden');render();if(type==='write')renderWriteInput();if(type==='team')$('turnName').textContent='👥 دور: '+players[turn];}
-function renderWriteInput(){let box=document.createElement('div');box.id='writeAnswerBox';box.innerHTML='<input id="typedAnswer" class="field" placeholder="اكتب الإجابة هنا" autocomplete="off"><button class="primary" id="submitTyped">تأكيد الإجابة</button>';$("answers").after(box);$('submitTyped').onclick=()=>{let val=$('typedAnswer').value.trim().toLocaleLowerCase('ar');let correct=String(qs[idx][1][qs[idx][2]]).trim().toLocaleLowerCase('ar');answer(val===correct?qs[idx][2]:-2)};}
-const originalRenderV8=render;
-render=function(){let old=$('writeAnswerBox');if(old)old.remove();originalRenderV8();if(runType==='write')renderWriteInput();if(runType==='team')$('turnName').textContent='👥 دور: '+players[turn];if(runType==='write')$('answers').classList.add('hidden');else $('answers').classList.remove('hidden');if(!$('hintUse')){let b=document.createElement('button');b.id='hintUse';b.className='utility';b.textContent='💡 استخدم تلميحاً';$('answers').after(b);b.onclick=useHint;}}
-const originalAnswerV8=answer;
-answer=function(n){if(runType==='write'&&n===-2){let correct=qs[idx][2];locked=true;clearInterval(timer);lives=Math.max(0,lives-1);streak=0;mistakes.push({q:qs[idx][0],chosen:$('typedAnswer')?.value||'إجابة غير صحيحة',correct:qs[idx][1][correct],explain:explainQuestion(qs[idx][0],qs[idx][1][correct])});$('feedback').textContent='ليست الإجابة المطلوبة. الصحيح: '+qs[idx][1][correct];$('feedback').className='feedback bad';$('lives').textContent='❤️'.repeat(lives)+'🖤'.repeat(3-lives);$('next').textContent=(idx===questionLimit-1||lives===0)?'عرض النتيجة':'السؤال التالي';$('next').classList.remove('hidden');return}originalAnswerV8(n);}
-const originalNextV8=next;
-next=function(){let wb=$('writeAnswerBox');if(wb)wb.remove();let hb=$('hintUse');if(hb)hb.remove();if(runType==='team'&&lives>0&&idx<questionLimit-1){turn=(turn+1)%players.length;}originalNextV8();}
-$('survivalBtn').onclick=()=>beginExpansion('survival');
-$('writeBtn').onclick=()=>beginExpansion('write');
-$('imageBtn').onclick=()=>beginExpansion('image');
-$('wheelBtn').onclick=wheelPrize;
-$('lootBtn').onclick=openLoot;
-$('hintBtn').onclick=buyHint;
-$('teamBtn').onclick=()=>{expansionPanel(`<b>👥 سباق جماعي على جهاز واحد</b><div class="mini">أدخل أسماء حتى أربعة لاعبين، ثم ابدأ السباق.</div><input class="field" id="teamA" value="اللاعب 1" maxlength="16"><input class="field" id="teamB" value="اللاعب 2" maxlength="16"><input class="field" id="teamC" value="اللاعب 3" maxlength="16"><input class="field" id="teamD" value="اللاعب 4" maxlength="16"><button class="v7-action" id="teamStart">ابدأ السباق</button>`);$('teamStart').onclick=()=>beginExpansion('team')};
-// Team race has its own result handling so every player's score is counted fairly.
-const finishBeforeTeamV8=finish;
-finish=function(){
- if(runType!=='team'){finishBeforeTeamV8();if(runType==='survival'){let d=getData();d.coins=(d.coins||0)+Math.max(2,Math.floor(scores[0]/10));d.totalPoints=(d.totalPoints||0)+scores[0];saveData(d);refreshHome();$('recordText').textContent+=' · مكافأة وضع البقاء أضيفت إلى رصيدك.';}return;}
- clearInterval(timer);let d=getData(),sum=scores.reduce((a,b)=>a+b,0),winner=scores.indexOf(Math.max(...scores));d.coins=(d.coins||0)+Math.max(5,Math.floor(sum/12));d.totalPoints=(d.totalPoints||0)+sum;d.board.push({name:players.map((n,i)=>n+': '+scores[i]).join(' | '),score:sum,diff:'سباق جماعي محلي',date:new Date().toLocaleDateString('ar')});d.board=d.board.sort((a,b)=>b.score-a.score).slice(0,8);saveData(d);$('finalScore').textContent=players.map((n,i)=>n+' '+scores[i]).join(' — ');$('resultText').textContent='الفائز: '+players[winner]+' 🏆';$('recordText').textContent='سباق محلي لأربعة لاعبين · تم حفظ النتيجة على هذا الجهاز.';renderExtras(d);show('result');$('extras').classList.remove('hidden');celebrate();
-};
-// Keep expansion features visible in the home flow and preserve saved progress.
+/* V7-specific tournament score is included in weekly progress even for this special run. */
 refreshHome();
-</script>
-
-
-<script>
-/* V9 PRO: player progression, daily login rewards and mistake practice. */
-function v9LevelFor(xp){return Math.floor(Math.max(0,xp)/250)+1}
-function v9Refresh(){let d=getData(),xp=d.xp||0,level=v9LevelFor(xp),inside=xp%250,claimed=d.loginRewardDate===todayKey();$('v9Level').textContent=level;$('v9Xp').textContent=xp;$('v9Streak').textContent=(d.loginStreak||0)+' 🔥';$('v9XpBar').style.width=(inside/250*100)+'%';$('v9XpText').textContent='المستوى التالي: '+(250-inside)+' نقطة خبرة · '+inside+'/250';$('v9ClaimBtn').disabled=claimed;$('v9ClaimText').textContent=claimed?'استلمت هديتك اليوم ✓':'استلم هديتك اليومية';}
-function v9ClaimDaily(){let d=getData(),today=todayKey();if(d.loginRewardDate===today){$('v9Message').textContent='🎁 استلمت مكافأتك اليوم. ارجع غداً!';return}let y=new Date();y.setDate(y.getDate()-1);let yesterday=y.getFullYear()+'-'+String(y.getMonth()+1).padStart(2,'0')+'-'+String(y.getDate()).padStart(2,'0');d.loginStreak=d.loginRewardDate===yesterday?(d.loginStreak||0)+1:1;let reward=10+Math.min(20,d.loginStreak*2);d.loginRewardDate=today;d.coins=(d.coins||0)+reward;d.xp=(d.xp||0)+20;saveData(d);refreshHome();v9Refresh();$('v9Message').textContent='🎉 حصلت على '+reward+' عملة و20 خبرة. سلسلة الدخول: '+d.loginStreak+' يوم.';}
-function v9StartPractice(){let d=getData(),items=(d.mistakes||[]).filter(x=>x&&x.q&&x.correct).slice(0,20);if(!items.length){$('v9Message').textContent='لا توجد أخطاء محفوظة بعد. العب جولة أولاً حتى نجمع أسئلة للتدريب.';return}clearInterval(timer);mode=1;runType='practice';runLabel='تدريب الأخطاء';questionLimit=items.length;runTime=cfg[diff].time;players=[$('player1').value.trim()||'اللاعب'];turn=0;scores=[0,0];idx=0;streak=0;lives=3;mistakes=[];qs=items.map(m=>{let opts=[m.correct,...shuffle(banks.easy.concat(banks.medium,banks.hard).map(q=>q[1][q[2]]).filter(a=>a!==m.correct)).slice(0,3)];opts=shuffle(opts);return [m.q,opts,opts.indexOf(m.correct),m.explain||'راجع الإجابة الصحيحة وحاول تذكر سببها.']});$('score').textContent='0';$('streak').textContent='0';show('game');$('extras').classList.add('hidden');render();$('turnName').textContent='🎯 تدريب الأخطاء';}
-const v9PreviousFinish=finish;
-finish=function(){let oldType=runType,oldScore=scores.reduce((a,b)=>a+b,0);v9PreviousFinish();let d=getData();let earned=Math.max(10,Math.round(oldScore+(Math.max(0,idx+1-mistakes.length)*3)));d.xp=(d.xp||0)+earned;saveData(d);v9Refresh();if($('recordText'))$('recordText').textContent+=' · +' + earned + ' XP خبرة';};
-$('v9ClaimBtn').onclick=v9ClaimDaily;$('v9PracticeBtn').onclick=v9StartPractice;
-const v9OldRefresh=refreshHome;
-refreshHome=function(){v9OldRefresh();v9Refresh()};
-v9Refresh();
 </script>
 
 <div id="firebaseSyncBadge" dir="rtl" style="position:fixed;z-index:9999;bottom:12px;left:12px;max-width:calc(100vw - 24px);background:#18212f;color:#fff;border:1px solid #64748b;border-radius:14px;padding:9px 12px;font:13px Arial,sans-serif;box-shadow:0 4px 18px #0003">
@@ -474,8 +340,7 @@ v9Refresh();
   function localSnapshot() {
     return {
       main: localStorage.getItem(MAIN_KEY),
-      v7: localStorage.getItem(V7_KEY),
-      v11: localStorage.getItem("iqChallengeV11")
+      v7: localStorage.getItem(V7_KEY)
     };
   }
 
@@ -489,7 +354,6 @@ v9Refresh();
       await setDoc(ref, {
         main: data.main,
         v7: data.v7,
-        v11: data.v11,
         updatedAt: serverTimestamp()
       }, { merge: true });
       status("✅ تقدم اللعبة محفوظ سحابياً");
@@ -520,7 +384,6 @@ v9Refresh();
         const cloud = snap.data();
         if (typeof cloud.main === "string") localStorage.setItem(MAIN_KEY, cloud.main);
         if (typeof cloud.v7 === "string") localStorage.setItem(V7_KEY, cloud.v7);
-        if (typeof cloud.v11 === "string") localStorage.setItem("iqChallengeV11", cloud.v11);
         if (typeof window.refreshHome === "function") window.refreshHome();
         status("✅ تم استرجاع تقدمك من السحابة");
       } else {
@@ -538,42 +401,12 @@ v9Refresh();
   });
 </script>
 
-<script>if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script>
-
-/* V10 PRO: memory and visual-focus mini challenges. */
-let v10MemoryRound=0,v10MemoryScore=0,v10MemorySequence=[],v10MemoryTimer=null,v10FocusRound=0,v10FocusScore=0;
-function v10Reward(xp,coins){let d=getData();d.xp=(d.xp||0)+xp;d.coins=(d.coins||0)+coins;saveData(d);refreshHome();v9Refresh();}
-function v10MemoryStart(){clearTimeout(v10MemoryTimer);v10MemoryRound=1;v10MemoryScore=0;v10MemoryNext();}
-function v10MemoryNext(){if(v10MemoryRound>5){let xp=20+v10MemoryScore*12,coins=5+v10MemoryScore*3;let d=getData();d.memoryBest=Math.max(d.memoryBest||0,v10MemoryScore);d.memoryRuns=(d.memoryRuns||0)+1;saveData(d);v10Reward(xp,coins);expansionPanel(`<div style="font-size:38px">🧠🏆</div><b>انتهى اختبار الذاكرة!</b><p>نتيجتك: ${v10MemoryScore}/5</p><p class="mini">أفضل نتيجة: ${d.memoryBest}/5 · حصلت على ${xp} خبرة و${coins} عملات.</p><button class="v7-action" id="memoryAgain">إعادة الاختبار</button>`);$('memoryAgain').onclick=v10MemoryStart;return}
- const len=v10MemoryRound+2;v10MemorySequence=Array.from({length:len},()=>Math.floor(Math.random()*10));expansionPanel(`<b>🧠 اختبار الذاكرة — الجولة ${v10MemoryRound}/5</b><p class="mini">احفظ الأرقام التالية، ستختفي بعد لحظات.</p><div style="font-size:34px;letter-spacing:8px;text-align:center;padding:18px" id="memoryDigits">${v10MemorySequence.join(' ')}</div><p class="mini" id="memoryHint">ركّز جيداً…</p>`);v10MemoryTimer=setTimeout(()=>{if(!$('memoryDigits'))return;$('memoryDigits').textContent='؟ '.repeat(len);$('memoryHint').textContent='اكتب الأرقام بنفس الترتيب دون مسافات:';$('expansionPanel').insertAdjacentHTML('beforeend','<input class="field" id="memoryEntry" inputmode="numeric" maxlength="10" placeholder="اكتب التسلسل هنا"><button class="v7-action" id="memoryCheck">تحقق</button><p class="mini" id="memoryFeedback"></p>');$('memoryCheck').onclick=()=>{let val=$('memoryEntry').value.replace(/\D/g,'');let correct=v10MemorySequence.join('');if(val===correct){v10MemoryScore++;$('memoryFeedback').textContent='صحيح! ممتاز 👏';}else{$('memoryFeedback').textContent='ليس تماماً. التسلسل كان: '+correct;}$('memoryCheck').disabled=true;v10MemoryRound++;setTimeout(v10MemoryNext,850)};$('memoryEntry').focus();},2200);
-}
-function v10FocusStart(){v10FocusRound=1;v10FocusScore=0;v10FocusNext()}
-function v10FocusNext(){if(v10FocusRound>5){let xp=15+v10FocusScore*10,coins=4+v10FocusScore*2;let d=getData();d.focusBest=Math.max(d.focusBest||0,v10FocusScore);d.focusRuns=(d.focusRuns||0)+1;saveData(d);v10Reward(xp,coins);expansionPanel(`<div style="font-size:38px">👁️✨</div><b>انتهى تحدّي التركيز!</b><p>إجابات صحيحة: ${v10FocusScore}/5</p><p class="mini">أفضل نتيجة: ${d.focusBest}/5 · مكافأتك ${xp} خبرة و${coins} عملات.</p><button class="v7-action" id="focusAgain">إعادة التحدي</button>`);$('focusAgain').onclick=v10FocusStart;return}
- const icons=['🍎','🍋','🍇','🍒','🥝','🍉','🍊','🍐'];let common=icons[Math.floor(Math.random()*icons.length)],odd=icons.filter(x=>x!==common)[Math.floor(Math.random()*(icons.length-1))],pos=Math.floor(Math.random()*16),cells=Array.from({length:16},(_,i)=>i===pos?odd:common);expansionPanel(`<b>👁️ تحدّي التركيز — الجولة ${v10FocusRound}/5</b><p class="mini">اضغط على الرمز المختلف بأسرع ما تستطيع.</p><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0">${cells.map((x,i)=>`<button class="utility focus-cell" data-cell="${i}" style="font-size:27px;padding:12px">${x}</button>`).join('')}</div><p class="mini" id="focusFeedback">اختر الرمز المختلف.</p>`);document.querySelectorAll('.focus-cell').forEach(b=>b.onclick=()=>{document.querySelectorAll('.focus-cell').forEach(x=>x.disabled=true);if(Number(b.dataset.cell)===pos){v10FocusScore++;$('focusFeedback').textContent='أحسنت! اكتشفته بسرعة 🎉'}else{$('focusFeedback').textContent='قريب! الرمز المختلف كان في مكان آخر.'}v10FocusRound++;setTimeout(v10FocusNext,750)});}
-$('memoryChallengeBtn').onclick=v10MemoryStart;$('focusChallengeBtn').onclick=v10FocusStart;
-
 
 <script>
-/* V11 PRO expansion: local world progression, hero upgrades, shop and 20 mini-games. */
-const V11_KEY='iqChallengeV11';
-function v11Data(){let d={};try{d=JSON.parse(localStorage.getItem(V11_KEY)||'{}')||{}}catch{};d.world=d.world||1;d.bosses=d.bosses||[];d.hero=d.hero||'🧠';d.heroLevel=d.heroLevel||1;d.heroes=d.heroes||['🧠'];d.power=d.power||0;d.boxes=d.boxes||0;d.lastTournament=d.lastTournament||'';return d}
-function v11Save(d){localStorage.setItem(V11_KEY,JSON.stringify(d));if(window.__firebaseQueueSave)window.__firebaseQueueSave();v11Refresh()}
-function v11Panel(html){$('v11Panel').innerHTML=html;$('v11Panel').scrollIntoView({behavior:'smooth',block:'nearest'})}
-function v11Refresh(){let d=v11Data();$('v11World').textContent=d.world+' / 10';$('v11Hero').textContent=d.hero;$('v11HeroLevel').textContent=d.heroLevel}
-const v11Worlds=['غابة الألغاز 🌳','صحراء الأسرار 🏜️','قمم الجليد ❄️','مدينة الروبوتات 🤖','مملكة البحار 🌊','كوكب الأرقام 🪐','وادي الظلال 🌘','قلعة الكلمات 🏰','بركان المنطق 🌋','عرش العباقرة 👑'];
-function v11Map(){let d=v11Data();v11Panel('<b>🗺️ خريطة العوالم</b><p class="mini">اهزم زعيم العالم لفتح العالم التالي. كل عالم يفتح بعد إنهاء زعيمه.</p>'+v11Worlds.map((w,i)=>`<div class="v7-row"><span>${i+1}. ${w} ${d.bosses.includes(i+1)?'✅':'🔒'}</span><button class="v7-action" data-world="${i+1}" ${i+1>d.world?'disabled':''}>${i+1===d.world?'ادخل العالم':d.bosses.includes(i+1)?'مكتمل':'مفتوح'}</button></div>`).join('')+'<div id="v11BossInfo" class="mini">العالم الحالي: '+v11Worlds[d.world-1]+'</div>');document.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>v11Boss(+b.dataset.world))}
-function v11Boss(n){let d=v11Data();if(n>d.world)return;let q=shuffle(banks.hard.concat(banks.medium)).slice(0,5);mode=1;runType='v11boss';runLabel='زعيم '+v11Worlds[n-1];questionLimit=5;runTime=22;players=['البطل'];turn=0;scores=[0,0];idx=0;streak=0;lives=3;mistakes=[];qs=q;selectedStage=n*10;$('score').textContent='0';$('streak').textContent='0';show('game');$('extras').classList.add('hidden');$('turnName').textContent='👑 زعيم العالم '+n;render()}
-function v11Heroes(){let d=v11Data(),heroes=[['🧠','المفكر','تلميح مجاني عند الترقية'],['🦉','البومة','خبرة إضافية'],['🦊','الثعلب','مكافأة عملات'],['🤖','الروبوت','حماية في جولة تدريب'],['🦁','الأسد','بطل المواجهات']];v11Panel('<b>🦸 الأبطال والقدرات</b><p class="mini">ترقية الشخصية المختارة تكلف 30 عملة وتزيد مستوى البطل.</p>'+heroes.map(h=>`<div class="v7-row"><span style="font-size:24px">${h[0]} <b>${h[1]}</b><div class="v7-muted">${h[2]}</div></span><button class="v7-action" data-hero="${h[0]}">${d.heroes.includes(h[0])?(d.hero===h[0]?'مختار ✓':'اختيار'):'فتح 40 🪙'}</button></div>`).join('')+`<div class="v7-row"><b>مستوى ${d.hero} الحالي: ${d.heroLevel}</b><button class="v7-action" id="v11Upgrade">ترقية 30 🪙</button></div>`);document.querySelectorAll('[data-hero]').forEach(b=>b.onclick=()=>{let x=v11Data(),id=b.dataset.hero;if(!x.heroes.includes(id)){let g=getData();if(g.coins<40){alert('تحتاج 40 عملة');return}g.coins-=40;saveData(g);x.heroes.push(id)}x.hero=id;v11Save(x);v11Heroes()});$('v11Upgrade').onclick=()=>{let g=getData(),x=v11Data();if(g.coins<30){alert('تحتاج 30 عملة');return}g.coins-=30;x.heroLevel++;x.power++;saveData(g);v11Save(x);v11Heroes()}}
-function v11Shop(){let d=getData(),v=v11Data();v11Panel('<b>🛒 متجر الأبطال والمكافآت</b><p class="mini">رصيدك: '+d.coins+' عملة. كل عملية شراء تخصم من رصيدك المحلي.</p><div class="v7-row"><span>🎁 صندوق مفاجآت — 25 عملة</span><button class="v7-action" id="v11Box">شراء وفتح</button></div><div class="v7-row"><span>💡 3 تلميحات — 20 عملة</span><button class="v7-action" id="v11Hints">شراء</button></div><div class="v7-row"><span>⭐ 100 نقطة خبرة — 35 عملة</span><button class="v7-action" id="v11Xp">شراء</button></div><div class="v7-row"><span>🔑 مفتاح العالم التالي — 80 عملة</span><button class="v7-action" id="v11Key">شراء</button></div><div id="v11ShopMsg" class="mini"></div>');function pay(cost,fn){let g=getData();if(g.coins<cost){$('v11ShopMsg').textContent='عملاتك غير كافية.';return}g.coins-=cost;fn(g);saveData(g);refreshHome();$('v11ShopMsg').textContent='تمت العملية بنجاح!';v11Shop()}$('v11Box').onclick=()=>pay(25,g=>{let rewards=[()=>g.coins+=50,()=>g.hints=(g.hints||0)+3,()=>g.xp=(g.xp||0)+75,()=>{let x=v11Data();x.heroLevel++;v11Save(x)}];rewards[Math.floor(Math.random()*rewards.length)]()});$('v11Hints').onclick=()=>pay(20,g=>g.hints=(g.hints||0)+3);$('v11Xp').onclick=()=>pay(35,g=>g.xp=(g.xp||0)+100);$('v11Key').onclick=()=>pay(80,g=>{let x=v11Data();if(x.world<10)x.world++;v11Save(x)})}
-const v11MiniNames=['حساب البرق','متتالية الأرقام','ذاكرة الكلمات','اختبار المفردات','لغز الأيام','العدد المختلف','تحدي الضرب','جمع سريع','القسمة الذكية','مقارنة الأعداد','تسلسل الحروف','ألغاز المنطق','أشكال هندسية','مضاعفات العدد','الأعداد الأولية','تخمين النمط','ترتيب العمليات','حساب الزمن','ألغاز عامة','تحدي العبقري'];
-function v11Question(id){let a=2+Math.floor(Math.random()*18),b=2+Math.floor(Math.random()*12),q,ans,wrong;switch(id){case 0:q=`كم يساوي ${a}+${b}؟`;ans=a+b;break;case 1:q=`ما العدد التالي: ${a}, ${a+3}, ${a+6}, ؟`;ans=a+9;break;case 2:q='أي كلمة تبدأ بحرف مختلف؟';return ['أي كلمة تبدأ بحرف مختلف؟',['تفاح','تمرة','باب','تين'],2];case 3:return ['ما مرادف كلمة «سريع»؟',['بطيء','عاجل','هادئ','ثقيل'],1];case 4:return ['إذا كان اليوم الثلاثاء، فما اليوم بعد 10 أيام؟',['الخميس','الجمعة','السبت','الأحد'],1];case 5:return ['اختر العدد المختلف: 4، 8، 12، 15',['4','8','12','15'],3];case 6:q=`كم حاصل ${a} × ${b}?`;ans=a*b;break;case 7:q=`احسب ${a*2}+${b}`;ans=a*2+b;break;case 8:q=`كم حاصل ${a*b} ÷ ${a}؟`;ans=b;break;case 9:q=`أيهما أكبر؟ ${a*3} أم ${b*2}`;ans=Math.max(a*3,b*2);break;case 10:return ['ما الحرف التالي: أ، ب، ت، ث، ؟',['ج','ح','خ','د'],1];case 11:return ['إذا تجاوزت المتسابق الثاني، ما ترتيبك؟',['الأول','الثاني','الثالث','الرابع'],1];case 12:return ['كم ضلعاً للشكل السداسي؟',['4','5','6','8'],2];case 13:q=`ما أول مضاعف للعدد ${a} بعد ${a*3}؟`;ans=a*4;break;case 14:q=`أي عدد أولي؟`;return [q,['9','15','17','21'],2];case 15:q=`ما العدد التالي: ${a}, ${a*2}, ${a*4}, ؟`;ans=a*8;break;case 16:q=`احسب: ${a}+${b}×2`;ans=a+b*2;break;case 17:return ['كم دقيقة في ساعتين ونصف؟',['120','130','150','180'],2];case 18:return ['ما الشيء الذي له عين ولا يرى؟',['الإبرة','الكتاب','الباب','القلم'],0];default:q=`إذا كان معك ${a+b} قطعة وأعطيت ${b}، كم يبقى؟`;ans=a;}
- let opts=[ans,ans+1,ans-1,ans+3];if(id===9)opts=[a*3,b*2,a+b,a*b];opts=shuffle(opts.map(String));return [q,opts,opts.indexOf(String(ans))]}
-function v11MiniHub(){v11Panel('<b>🧩 20 لعبة ذكاء مصغّرة</b><p class="mini">كل لعبة تبدأ بخمس جولات قصيرة وتمنحك نقاطاً وخبرة حسب أدائك.</p><div class="feature-grid">'+v11MiniNames.map((n,i)=>`<button class="feature-btn" data-mini="${i}">${i+1}. ${n}<small>ابدأ التحدي</small></button>`).join('')+'</div>');document.querySelectorAll('[data-mini]').forEach(b=>b.onclick=()=>v11StartMini(+b.dataset.mini))}
-function v11StartMini(id){mode=1;runType='v11mini';runLabel=v11MiniNames[id];questionLimit=5;runTime=20;players=['اللاعب'];turn=0;scores=[0,0];idx=0;streak=0;lives=3;mistakes=[];qs=Array.from({length:5},()=>v11Question(id));$('score').textContent='0';$('streak').textContent='0';show('game');$('extras').classList.add('hidden');$('turnName').textContent='🧩 '+v11MiniNames[id];render()}
-function v11Online(){v11Panel('<b>🌐 البطولات والتحديات أونلاين</b><p class="mini">حساب Firebase الحالي يستخدم تسجيل دخول مجهولاً وحفظاً خاصاً لكل لاعب. لا توجد حالياً خدمة مطابقة لاعبين أو غرفة بطولة مشتركة، لذلك لن أعرض منافسة وهمية على أنها أونلاين.</p><div class="v7-row"><span>☁️ حفظ تقدمك الشخصي</span><b>متاح عند نجاح اتصال Firebase</b></div><div class="v7-row"><span>🏆 بطولة محلية أسبوعية</span><b>متاحة</b></div><div class="v7-row"><span>⚔️ تحدّي مباشر بين أجهزة مختلفة</span><b>يتطلب خادماً مشتركاً</b></div><div class="v7-row"><span>🌍 ترتيب عالمي موثوق</span><b>يتطلب تحققاً وقواعد أمان</b></div><p class="mini">يمكن استخدام البطولة المحلية حالياً من مركز V9. لتفعيل اللعب الحقيقي بين الأجهزة يلزم إعداد Firebase Database/Firestore وقواعد أمان وخدمة تحقق من النتائج.</p>')}
-$('v11MapBtn').onclick=v11Map;$('v11HeroBtn').onclick=v11Heroes;$('v11ShopBtn').onclick=v11Shop;$('v11MiniBtn').onclick=v11MiniHub;$('v11OnlineBtn').onclick=v11Online;v11Refresh();
-const v11OldFinish=finish;
-finish=function(){let type=runType,score=scores.reduce((a,b)=>a+b,0),bossStage=selectedStage;v11OldFinish();if(type==='v11boss'&&lives>0&&idx>=questionLimit-1){let d=v11Data();if(!d.bosses.includes(bossStage))d.bosses.push(bossStage);if(d.world===bossStage&&d.world<10)d.world++;v11Save(d);$('recordText').textContent+=' · زعيم مهزوم! تم فتح التقدم بالعالم التالي.';}if(type==='v11mini'){let d=getData();d.coins=(d.coins||0)+Math.max(2,Math.floor(score/15));d.xp=(d.xp||0)+Math.max(5,score);saveData(d);refreshHome();$('recordText').textContent+=' · مكافأة تحدّي مصغّر أضيفت.';}};
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => console.warn('PWA setup:', err));
+  });
+}
 </script>
-
 </body></html>
