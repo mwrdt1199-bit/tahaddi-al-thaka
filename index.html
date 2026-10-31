@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101a35"><title>تحدّي الذكاء — V6 PRO</title>
+<style>
+:root{--bg:#0b1224;--panel:#151f38;--panel2:#263653;--line:#405477;--gold:#fbbf24;--text:#f8fafc;--muted:#bdc9df;--green:#14543f;--red:#642b3c}
+*{box-sizing:border-box}body{margin:0;padding:20px 13px;min-height:100vh;background:radial-gradient(circle at top,#304879,#0b1224 68%);font-family:system-ui,sans-serif;color:var(--text)}
+main{max-width:680px;margin:auto}.top,.stats,.actions,.rowline{display:flex;gap:10px;justify-content:space-between;align-items:center}
+.top{margin-bottom:16px}.pill,.stat{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:0 15px 45px #0005;margin-bottom:13px}
+.center{text-align:center}.big{font-size:52px}h1{color:var(--gold);font-size:31px;margin:7px 0}.muted,.intro,.mini{color:var(--muted)}.intro{line-height:1.8}
+button,input{font:inherit;border-radius:13px;padding:12px}button{border:0;cursor:pointer;transition:transform .12s,filter .12s}button:active{transform:scale(.98)}button:focus-visible,input:focus-visible{outline:3px solid white;outline-offset:2px}
+.primary{background:var(--gold);color:#172033;font-weight:800;flex:1}.secondary,.diff,.utility{background:var(--panel2);color:white;border:1px solid var(--line)}
+.difficulty{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}.diff.selected{border:2px solid var(--gold);background:#354563}
+.field{width:100%;background:#0e1830;border:1px solid var(--line);color:white;margin:6px 0 10px}
+.stats{margin-bottom:10px}.stat{text-align:center;flex:1}.stat b{display:block;color:var(--gold);font-size:21px}.stat span{font-size:12px;color:var(--muted)}
+.progress{height:8px;background:var(--line);border-radius:10px;overflow:hidden;margin:13px 0 18px}.bar{height:100%;background:var(--gold);width:0;transition:width .25s}
+.question{font-size:22px;line-height:1.7;min-height:65px}.answers{display:grid;gap:9px}.answer{text-align:right;background:var(--panel2);color:white;border:1px solid var(--line)}
+.answer:disabled{opacity:1}.correct{background:var(--green)!important;border-color:#36b98a}.wrong{background:var(--red)!important;border-color:#d86b85}
+.feedback{min-height:30px;color:var(--muted);margin-top:10px}.hidden{display:none!important}.actions{margin-top:12px}.mini{font-size:13px;line-height:1.7}
+.tools{display:flex;gap:8px;flex-wrap:wrap}.tools button{flex:1}.panel-title{color:var(--gold);margin:0 0 10px}
+.score-big{font-size:38px;color:var(--gold);font-weight:800}.badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;text-align:right}
+.achievement{padding:10px;background:#202d49;border:1px solid var(--line);border-radius:12px}.achievement.locked{opacity:.4;filter:grayscale(1)}
+table{width:100%;border-collapse:collapse}td,th{padding:9px;border-bottom:1px solid var(--line);text-align:right}th{color:var(--gold)}
+footer{text-align:center;color:#91a1bd;font-size:12px;margin:17px}
+@media(max-width:430px){.card{padding:16px}.difficulty{grid-template-columns:1fr}.question{font-size:20px}.top{font-size:14px}.badge-grid{grid-template-columns:1fr}}
+
+/* V4 PRO — واجهة احترافية وحركات خفيفة */
+:root{--gold2:#ffe08a;--glow:rgba(251,191,36,.22);--glass:rgba(19,31,56,.78)}
+body{background:radial-gradient(ellipse at 12% 8%,rgba(56,91,157,.48),transparent 34%),radial-gradient(ellipse at 88% 26%,rgba(113,69,150,.24),transparent 30%),linear-gradient(145deg,#070d1c,#101b35 55%,#080f20);background-attachment:fixed;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;z-index:-1;width:270px;height:270px;border-radius:50%;filter:blur(75px);opacity:.16;pointer-events:none;animation:floatGlow 12s ease-in-out infinite alternate}
+body:before{background:#3b82f6;top:12%;left:-120px}body:after{background:#d59b2a;right:-130px;bottom:4%;animation-delay:-5s}
+@keyframes floatGlow{to{transform:translate(35px,-28px) scale(1.18)}}
+main{max-width:720px}.top{padding:12px 15px;border:1px solid #ffffff16;border-radius:18px;background:#0b1428b8;backdrop-filter:blur(14px);box-shadow:0 8px 30px #0003}
+.top strong{letter-spacing:.2px}.top strong:first-letter{filter:drop-shadow(0 0 8px var(--glow))}
+.pill,.stat{background:linear-gradient(145deg,#263957d9,#172641e8);border-color:#91a9d32b;box-shadow:inset 0 1px #ffffff0c,0 8px 22px #0002}
+.card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(25,39,68,.94),rgba(13,23,44,.96));border:1px solid #a8c4f02b;border-radius:25px;padding:23px;box-shadow:0 22px 60px #0005,inset 0 1px #ffffff0c;backdrop-filter:blur(15px);animation:cardIn .55s cubic-bezier(.2,.8,.2,1) both}
+.card:before{content:"";position:absolute;inset:0 12% auto;height:1px;background:linear-gradient(90deg,transparent,#fbbf2480,transparent)}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.big{display:inline-grid;place-items:center;width:82px;height:82px;border-radius:26px;background:linear-gradient(145deg,#fbbf2428,#fbbf2408);border:1px solid #fbbf2440;box-shadow:0 0 34px #fbbf241c;animation:iconFloat 4s ease-in-out infinite}
+@keyframes iconFloat{50%{transform:translateY(-5px) rotate(2deg)}}
+h1{background:linear-gradient(90deg,#fff1bd,#fbbf24 55%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 5px 25px #fbbf2414}
+button{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;min-height:45px}
+button:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,#ffffff24 48%,transparent 70%);transform:translateX(-130%);transition:transform .55s ease;pointer-events:none}
+button:hover:after{transform:translateX(130%)}button:hover{transform:translateY(-2px)}button:active{transform:scale(.975)}
+.primary{background:linear-gradient(110deg,#f5b91d,#ffdc75);box-shadow:0 9px 24px #fbbf2426;color:#172033}.primary:hover{box-shadow:0 12px 30px #fbbf2450;filter:brightness(1.04)}
+.secondary,.diff,.utility,.answer{border-color:#9db5dc30;box-shadow:inset 0 1px #ffffff0b}.secondary:hover,.diff:hover,.utility:hover,.answer:hover{border-color:#fbbf2480;background:#354969}
+.diff.selected{border-color:var(--gold);box-shadow:0 0 0 2px #fbbf2420,0 7px 22px #fbbf2415}
+.field{background:#0b152a;border-color:#90a8d52f}.field:focus{border-color:#fbbf24;box-shadow:0 0 0 3px #fbbf2418}
+.stat b{font-variant-numeric:tabular-nums;text-shadow:0 0 18px #fbbf2430}.progress{height:10px;background:#080f20;border:1px solid #ffffff12;box-shadow:inset 0 2px 5px #0006}.bar{background:linear-gradient(90deg,#d99b16,#ffe08a);box-shadow:0 0 16px #fbbf2480;border-radius:10px}
+.question{font-weight:750;letter-spacing:.1px;text-shadow:0 2px 16px #0003}.answer{border-radius:15px;padding:14px 16px;background:linear-gradient(110deg,#263956,#1b2b47);animation:answerIn .35s both;animation-delay:calc(var(--i,0)*45ms)}
+@keyframes answerIn{from{opacity:0;transform:translateX(9px)}to{opacity:1;transform:translateX(0)}}
+.answer.correct{background:linear-gradient(110deg,#126447,#187451)!important;border-color:#51e0aa!important;box-shadow:0 0 22px #31c48d28;animation:correctPop .42s ease}
+.answer.wrong{background:linear-gradient(110deg,#6b293e,#8a3450)!important;border-color:#ff829d!important;animation:wrongShake .38s ease}
+@keyframes correctPop{50%{transform:scale(1.025)}}@keyframes wrongShake{20%,60%{transform:translateX(4px)}40%,80%{transform:translateX(-4px)}}
+.feedback{font-weight:700;min-height:34px}.feedback.good{color:#6ee7b7}.feedback.bad{color:#fda4af}
+#timer.urgent{color:#fb7185;text-shadow:0 0 18px #fb718580;animation:pulse .7s infinite alternate}@keyframes pulse{to{transform:scale(1.12)}}
+#next{box-shadow:0 8px 22px #fbbf2420}.score-big{font-size:clamp(38px,9vw,58px);text-shadow:0 0 32px #fbbf2438}
+.achievement{background:linear-gradient(135deg,#263958,#192944);border-color:#a7bbdc24;transition:transform .2s,border-color .2s}.achievement:not(.locked):hover{transform:translateY(-3px);border-color:#fbbf2480}.achievement.locked{opacity:.34}
+footer{letter-spacing:.4px}
+.confetti{position:fixed;z-index:20;top:-14px;width:8px;height:13px;border-radius:2px;pointer-events:none;animation:confettiFall var(--dur,2.8s) linear forwards;transform:rotate(var(--rot,0deg))}
+@keyframes confettiFall{to{transform:translate3d(var(--dx,0px),110vh,0) rotate(720deg);opacity:.15}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+@media(max-width:430px){.card{padding:17px;border-radius:21px}.top{padding:10px 12px}.big{width:70px;height:70px;border-radius:22px}}
+
+
+.stage-head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 9px;color:var(--gold)}
+.stage-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;margin:10px 0}
+.stage-btn{min-width:0;padding:8px 2px;background:#1b2b47;color:#e5edf9;border:1px solid #9db5dc30;border-radius:10px;font-size:13px;font-weight:700}
+.stage-btn.active{background:linear-gradient(135deg,#fbbf24,#ffe08a);color:#172033;border-color:#fff0b5;box-shadow:0 0 0 2px #fbbf2430}
+.stage-btn.locked{opacity:.32;cursor:not-allowed;filter:grayscale(1)}
+.stage-btn.done{border-color:#39c995;color:#8df0c5}
+.stage-btn.done.active{color:#172033}
+@media(max-width:430px){.stage-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.stage-btn{padding:10px 3px}}
+
+
+/* V6 PRO additions */
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}
+.feature-btn{background:linear-gradient(135deg,#263957,#172641);color:#fff;border:1px solid #a8c4f033;text-align:right;padding:13px;border-radius:15px;font-weight:750}
+.feature-btn small{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:4px}
+.feature-btn:disabled{opacity:.45;cursor:not-allowed}
+.shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.shop-item{background:#1b2b47;border:1px solid #9db5dc30;border-radius:14px;padding:12px;text-align:center}
+.shop-item button{width:100%;margin-top:7px}
+.coin{color:#fbbf24;font-weight:800}
+.review-item{padding:12px;border:1px solid #ffffff18;border-radius:13px;margin:8px 0;background:#101c33}
+.theme-blue{--gold:#60a5fa;--gold2:#bfdbfe}.theme-purple{--gold:#c084fc;--gold2:#e9d5ff}.theme-emerald{--gold:#34d399;--gold2:#a7f3d0}
+@media(max-width:430px){.feature-grid,.shop-grid{grid-template-columns:1fr}}
+.v7-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.v7-tile{background:#1b2b47;border:1px solid #9db5dc30;border-radius:14px;padding:12px}.v7-progress{height:8px;background:#091326;border-radius:9px;overflow:hidden;margin:7px 0}.v7-progress i{display:block;height:100%;background:linear-gradient(90deg,#d99b16,#ffe08a)}.v7-action{background:#fbbf24;color:#172033;font-weight:800;margin:4px}.v7-muted{color:var(--muted);font-size:12px}.v7-row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #ffffff14}
+
+</style></head>
+<body><main>
+<div class="top"><strong>🧠 تحدّي الذكاء <small style="color:#fbbf24">V7 ULTIMATE</small></strong><span class="pill" id="level">اختر المستوى</span></div>
+
+
+<section class="card center" id="start">
+ <div class="big">🧩</div><h1>تحدّي الذكاء</h1>
+ <p class="intro">اختر مستواك وافتح 100 مرحلة تدريجياً في كل مستوى، مع حفظ تقدمك ونجومك على هذا الجهاز.</p>
+ <label for="player1">اسم اللاعب الأول</label><input class="field" id="player1" maxlength="16" value="اللاعب الأول">
+ <div id="player2wrap" class="hidden"><label for="player2">اسم اللاعب الثاني</label><input class="field" id="player2" maxlength="16" value="اللاعب الثاني"></div>
+ <div class="tools"><button class="utility" id="modeSingle">لاعب واحد</button><button class="utility" id="modeDuo">لاعبان بالتناوب</button></div>
+ <div class="difficulty">
+  <button class="diff selected" data-diff="easy">سهل 🌱</button><button class="diff" data-diff="medium">متوسط ⚡</button><button class="diff" data-diff="hard">صعب 🔥</button>
+ </div>
+ <div class="feature-grid">
+  <button class="feature-btn" id="dailyBtn">📅 التحدي اليومي<small id="dailyStatus">5 أسئلة ومكافأة يومية</small></button>
+  <button class="feature-btn" id="speedBtn">⚡ طور السرعة<small>60 ثانية — أسئلة متتابعة</small></button>
+  <button class="feature-btn" id="shopBtn">🪙 المتجر<small>اشترِ الثيمات والشخصيات</small></button>
+  <button class="feature-btn" id="reviewBtn">💡 مراجعة الأخطاء<small>راجع إجاباتك السابقة</small></button>
+ </div>
+ <p class="mini" id="best">أفضل نتيجة: 0</p>
+ <p class="mini" id="rankLine">رتبتك: مبتدئ</p>
+ <div class="stage-head"><b>🗺️ مراحل المستوى</b><span class="mini" id="stageProgress">0 / 100 مفتوحة</span></div>
+ <div class="stage-grid" id="stageGrid" aria-label="مراحل المستوى"></div>
+ <p class="mini" id="stageHint">اختر مرحلة مفتوحة للبدء. تحتاج إلى 60% على الأقل لاجتياز المرحلة.</p>
+ <button class="primary" id="startBtn">ابدأ المرحلة 1</button>
+</section>
+
+<section class="card hidden" id="game">
+ <div class="rowline"><b id="turnName">دور اللاعب</b><button class="utility" id="soundBtn" aria-pressed="true">🔊 الصوت: تشغيل</button></div>
+ <div class="stats">
+  <div class="stat"><b id="score">0</b><span>النقاط</span></div><div class="stat"><b id="timer">20</b><span>الثواني</span></div><div class="stat"><b id="num">1/10</b><span>السؤال</span></div>
+ </div>
+ <div class="stats"><div class="stat"><b id="streak">0</b><span>إجابات متتالية</span></div><div class="stat"><b id="points">10</b><span>قيمة السؤال</span></div></div>
+ <div class="progress"><div class="bar" id="bar"></div></div>
+ <p class="question" id="question"></p><div class="answers" id="answers"></div>
+ <div class="feedback" id="feedback" aria-live="polite">اختر إجابة واحدة.</div>
+ <div class="actions"><button class="secondary" id="quit">إنهاء الجولة</button><button class="primary hidden" id="next">التالي</button></div>
+</section>
+
+<section class="card center hidden" id="result">
+ <div class="big">🏆</div><h1>انتهت المرحلة!</h1><div class="score-big" id="finalScore">0</div>
+ <p class="intro" id="resultText"></p><p class="mini" id="recordText"></p>
+ <button class="primary" id="again">جولة جديدة</button><button class="secondary" id="home" style="width:100%;margin-top:8px">الرئيسية</button>
+</section>
+
+<section class="card hidden" id="extras">
+ <div class="rowline"><span class="mini" id="accountLine">💾 الحفظ التلقائي مفعّل على هذا الجهاز</span></div>
+ <p class="mini" id="cloudStatus" aria-live="polite">كل نتائجك وإنجازاتك تُحفظ تلقائياً على هذا الجهاز.</p>
+ <div class="rowline"><b class="coin" id="coinLine">🪙 0 عملة</b><b id="titleLine" class="mini">اللقب: مبتدئ</b></div>
+ <h3 class="panel-title" style="margin-top:18px">🎨 الثيمات والشخصيات</h3><div class="tools"><button class="utility" id="themeGold">ذهبي</button><button class="utility" id="themeBlue">أزرق</button><button class="utility" id="themePurple">بنفسجي</button><button class="utility" id="themeGreen">زمردي</button></div>
+ <div class="mini" id="characterLine" style="margin-top:8px">🧠 الشخصية: المفكر</div>
+ <h3 class="panel-title">🏅 إنجازاتك وألقابك</h3><div class="badge-grid" id="achievements"></div>
+ <h3 class="panel-title" style="margin-top:20px">🌍 لوحة الترتيب</h3><p class="mini">الترتيب الحالي محلي على هذا الجهاز؛ الترتيب العالمي الحقيقي يحتاج خادماً مشتركاً واتصالاً بالإنترنت.</p>
+ <div id="leaderboard"></div>
+ <h3 class="panel-title" style="margin-top:20px">📝 مراجعة آخر الأخطاء</h3><div id="mistakeReview"><p class="mini">لم تسجل أخطاء بعد.</p></div>
+ <p class="mini">تُحفظ نتائجك وإنجازاتك محلياً على هذا الجهاز.</p>
+ <div class="tools"><button class="secondary" id="resetData">مسح السجل والإنجازات</button></div>
+</section>
+<section class="card" id="v7hub">
+ <div class="rowline"><h3 class="panel-title">🌌 مركز V7 ULTIMATE</h3><span class="pill">الإصدار 7</span></div>
+ <p class="mini">عالمك الجديد: استكشف المناطق، طوّر مهاراتك، نافس أصدقاءك، واجمع المقتنيات.</p>
+ <div class="feature-grid">
+  <button class="feature-btn" data-v7="map">🗺️ خريطة العالم<small>مناطق ومراحل وزعماء</small></button>
+  <button class="feature-btn" data-v7="tournament">🏆 البطولة الأسبوعية<small>تحدّ محلي يتجدد كل أسبوع</small></button>
+  <button class="feature-btn" data-v7="skills">🌳 شجرة المهارات<small>طوّر قدراتك ومكافآتك</small></button>
+  <button class="feature-btn" data-v7="profile">👤 ملف اللاعب<small>إحصائياتك وألقابك</small></button>
+  <button class="feature-btn" data-v7="duel">⚔️ مواجهة 1 ضد 1<small>لاعبان على الجهاز نفسه</small></button>
+  <button class="feature-btn" data-v7="missions">🎯 المهام اليومية والأسبوعية<small>أهداف ومكافآت</small></button>
+  <button class="feature-btn" data-v7="collection">💎 المقتنيات<small>شارات وإطارات قابلة للفتح</small></button>
+  <button class="feature-btn" data-v7="analytics">📊 تحليل الذكاء<small>نقاط القوة ومجالات التدريب</small></button>
+  <button class="feature-btn" data-v7="friends">🤝 الأصدقاء<small>قائمة أصدقاء محلية</small></button>
+ </div>
+ <div id="v7Panel" class="review-item"><p class="mini">اختر إحدى ميزات V7 لفتح مركزها.</p></div>
+ <p class="mini">تنبيه: حفظ V7 محلي على هذا الجهاز. اللعب عبر الإنترنت، الأصدقاء الحقيقيون، والبطولات العالمية تتطلب خادماً وحسابات موثّقة؛ هذه النسخة توفر نمطاً محلياً تجريبياً دون ادعاء اتصال عالمي.</p>
+</section>
+<footer>تحدّي الذكاء — V7 ULTIMATE</footer>
+</main>
+<script>
+const banks={
+easy:[
+["كم عدد حروف كلمة «قلم»؟",["2","3","4","5"],1],["ما الشيء الذي كلما أخذت منه كبر؟",["البحر","الحفرة","الكتاب","الظل"],1],
+["أي شهر فيه 28 يوماً؟",["شباط فقط","كانون الثاني","كل الشهور","آذار فقط"],2],["ما العدد التالي: 2، 4، 8، 16، ؟",["18","24","30","32"],3],
+["له أسنان ولا يعض، ما هو؟",["المشط","الكلب","المفتاح","المنشار"],0],["إذا كان اليوم الاثنين، فما اليوم بعد 3 أيام؟",["الثلاثاء","الأربعاء","الخميس","الجمعة"],2],
+["كم ضلعاً للمثلث؟",["2","3","4","5"],1],["ما العدد المختلف: 3، 6، 9، 11، 12؟",["3","6","9","11"],3],
+["ما نصف العدد 18؟",["6","8","9","12"],2],["كم دقيقة في الساعة؟",["30","45","60","90"],2],
+["ما عكس كلمة «قديم»؟",["بعيد","حديث","صعب","صغير"],1],["أيّها من وسائل النقل؟",["قلم","قطار","كتاب","نافذة"],1]
+],
+medium:[
+["ما العدد التالي: 1، 4، 9، 16، ؟",["20","24","25","36"],2],["إذا تجاوزت المتسابق الثاني في سباق، فما ترتيبك؟",["الأول","الثاني","الثالث","الرابع"],1],
+["أي كلمة لا تنتمي للمجموعة؟",["تفاح","موز","جزر","عنب"],2],["ثلاثة أعداد متتالية مجموعها 36. ما الأوسط؟",["10","11","12","13"],2],
+["ما العدد التالي: 3، 6، 12، 24، ؟",["30","36","48","60"],2],["لدى سارة 3 أخوات، ولكل أخت أخ واحد. كم عدد الإخوة الذكور؟",["1","3","4","6"],0],
+["ساعة تتأخر 5 دقائق كل ساعة. كم تتأخر بعد 4 ساعات؟",["10","15","20","25"],2],["ما ناتج 15% من 200؟",["15","20","30","40"],2],
+["إذا كانت كل الورود نباتات وبعض النباتات سامة، فهل كل الورود سامة؟",["نعم","لا يمكن الجزم","كلها آمنة","ليست نباتات"],1],["ما العدد الناقص: 5، 10، 20، ؟، 80",["25","30","40","60"],2],
+["كم زاوية قائمة في المستطيل؟",["2","3","4","5"],2],["إذا كان اليوم الأربعاء، فما اليوم بعد 10 أيام؟",["الجمعة","السبت","الأحد","الاثنين"],1]
+],
+hard:[
+["عدد من رقمين، مجموع رقميه 9، وإذا عكست رقميه زاد 27. ما العدد؟",["36","45","54","63"],1],["ما العدد التالي: 2، 6، 12، 20، 30، ؟",["36","40","42","44"],2],
+["في غرفة 4 زوايا، وفي كل زاوية قطة. أمام كل قطة 3 قطط. كم قطة؟",["4","8","12","16"],0],["ما أصغر عدد موجب يقبل القسمة على 2 و3 و4 و5؟",["30","40","50","60"],3],
+["أكمل النمط: 1، 1، 2، 3، 5، 8، ؟",["11","12","13","15"],2],["ما أقل عدد من الجوارب تسحبه من درج فيه جوارب سوداء وبيضاء لضمان زوج من اللون نفسه؟",["2","3","4","6"],1],
+["إذا كانت 2=6 و3=12 و4=20، فكم 5 وفق النمط؟",["25","30","35","40"],1],["ما العدد التالي: 1، 2، 6، 24، ؟",["60","100","120","144"],2],
+["مجموع زوايا شكل رباعي يساوي؟",["180°","270°","360°","540°"],2],["إذا كان 3 صنابير تملأ 3 خزانات في 3 ساعات، فكم ساعة تحتاج 6 صنابير لملء 6 خزانات بالمعدل نفسه؟",["3","6","9","12"],0],
+["ما العدد الذي يقبل القسمة على 9؟",["124","135","142","151"],1],["إذا كان نصف عدد زائد 7 يساوي 19، فما العدد؟",["12","19","24","26"],2]
+]};
+const cfg={easy:{name:"سهل",time:20,points:10},medium:{name:"متوسط",time:25,points:15},hard:{name:"صعب",time:30,points:20}};
+const $=id=>document.getElementById(id);
+let diff="easy",mode=1,players=["اللاعب الأول","اللاعب الثاني"],turn=0,qs=[],idx=0,scores=[0,0],streak=0,t=20,timer=null,locked=false,sound=true;
+const storeKey="iqChallengeV6";
+const legacyKey="iqChallengeV5";
+let runType="stage",questionLimit=10,runTime=20,runLabel="المرحلة";
+let mistakes=[];
+let selectedStage=1;
+function freshData(){return {best:{},board:[],achievements:[],totalPoints:0,coins:0,ownedThemes:["gold"],ownedCharacters:["🧠"],theme:"gold",character:"🧠",dailyDate:"",dailyStreak:0,mistakes:[],titles:[],stages:{easy:{unlocked:1,stars:{}},medium:{unlocked:1,stars:{}},hard:{unlocked:1,stars:{}}}}}
+function getData(){try{let d=JSON.parse(localStorage.getItem(storeKey));if(!d){const old=JSON.parse(localStorage.getItem(legacyKey)||localStorage.getItem("iqChallengeV4")||"null");d=old||freshData()}d=d||freshData();d.best=d.best||{};d.board=d.board||[];d.achievements=d.achievements||[];d.totalPoints=d.totalPoints||0;d.coins=d.coins||0;d.ownedThemes=d.ownedThemes||["gold"];d.ownedCharacters=d.ownedCharacters||["🧠"];d.theme=d.theme||"gold";d.character=d.character||"🧠";d.mistakes=d.mistakes||[];d.titles=d.titles||[];d.dailyDate=d.dailyDate||"";d.dailyStreak=d.dailyStreak||0;d.stages=d.stages||freshData().stages;for(const k of ["easy","medium","hard"]){d.stages[k]=d.stages[k]||{unlocked:1,stars:{}};d.stages[k].unlocked=Math.max(1,Math.min(100,d.stages[k].unlocked||1));d.stages[k].stars=d.stages[k].stars||{}}return d}catch{return freshData()}}
+function saveData(d){localStorage.setItem(storeKey,JSON.stringify(d));if(window.__firebaseQueueSave)window.__firebaseQueueSave()}
+function todayKey(){let d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function applyTheme(){document.body.classList.remove("theme-blue","theme-purple","theme-emerald");let th=getData().theme;if(th==="blue")document.body.classList.add("theme-blue");if(th==="purple")document.body.classList.add("theme-purple");if(th==="green")document.body.classList.add("theme-emerald")}
+function rankFor(points){return points>=1000?3:points>=500?2:points>=200?1:0}
+const rankNames=["مبتدئ 🌱","متقدم ⚡","خبير 🧠","عبقري 🏆"];
+
+function show(id){["start","game","result"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function shuffle(a){a=[...a];for(let n=a.length-1;n>0;n--){let j=Math.floor(Math.random()*(n+1));[a[n],a[j]]=[a[j],a[n]]}return a}
+function beep(ok){if(!sound)return;try{let c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=ok?740:220;g.gain.value=.06;o.start();o.stop(c.currentTime+.13);o.onended=()=>c.close()}catch{}}
+function refreshHome(){let d=getData();$("best").textContent="أفضل نتيجة ("+cfg[diff].name+"): "+(d.best[diff]||0)+" نقطة";$("rankLine").textContent="رتبتك: "+rankNames[rankFor(d.totalPoints||0)]+" — مجموع نقاطك: "+(d.totalPoints||0);renderExtras(d);renderStageGrid();$("coinLine").textContent="🪙 "+d.coins+" عملة";$("titleLine").textContent="اللقب: "+(d.titles.includes("عبقري")?"عبقري":d.titles.includes("مثابر")?"مثابر":"مبتدئ");$("characterLine").textContent=d.character+" الشخصية المختارة";$("dailyStatus").textContent=d.dailyDate===todayKey()?"اكتملت اليوم ✓":"5 أسئلة ومكافأة يومية";$("dailyBtn").disabled=d.dailyDate===todayKey();applyTheme()}
+function renderStageGrid(){let d=getData(),p=d.stages[diff],unlocked=p.unlocked||1;$("stageProgress").textContent=unlocked+" / 100 مفتوحة";if(selectedStage>unlocked)selectedStage=unlocked;$("stageGrid").innerHTML="";for(let n=1;n<=100;n++){let b=document.createElement("button"),stars=p.stars[n]||0;b.className="stage-btn"+(n===selectedStage?" active":"")+(n>unlocked?" locked":"")+(stars?" done":"");b.textContent=n+(stars?" ★":"");b.disabled=n>unlocked;b.title=n>unlocked?"أكمل المرحلة السابقة لفتحها":"المرحلة "+n+" — "+(stars?stars+" نجوم":"لم تُجتز بعد");b.onclick=()=>{selectedStage=n;renderStageGrid();$("startBtn").textContent="ابدأ المرحلة "+n};$("stageGrid").appendChild(b)}$("startBtn").textContent="ابدأ المرحلة "+selectedStage}
+document.querySelectorAll(".diff").forEach(b=>b.onclick=()=>{diff=b.dataset.diff;document.querySelectorAll(".diff").forEach(x=>x.classList.toggle("selected",x===b));$("level").textContent="المستوى: "+cfg[diff].name;selectedStage=1;refreshHome()});
+$("modeSingle").onclick=()=>{mode=1;$("player2wrap").classList.add("hidden");$("modeSingle").style.borderColor="var(--gold)";$("modeDuo").style.borderColor="var(--line)"};
+$("modeDuo").onclick=()=>{mode=2;$("player2wrap").classList.remove("hidden");$("modeDuo").style.borderColor="var(--gold)";$("modeSingle").style.borderColor="var(--line)"};
+function start(){runType="stage";questionLimit=selectedStage%10===0?5:10;runTime=selectedStage%10===0?15:cfg[diff].time;runLabel=selectedStage%10===0?"مرحلة الزعيم":"المرحلة";clearInterval(timer);let progress=getData().stages[diff];if(selectedStage>(progress.unlocked||1)){selectedStage=progress.unlocked||1;renderStageGrid();return}players=[$("player1").value.trim()||"اللاعب الأول",$("player2").value.trim()||"اللاعب الثاني"];turn=0;qs=shuffle(selectedStage%10===0?banks[diff].concat(banks.hard):banks[diff]).slice(0,questionLimit);idx=0;mistakes=[];scores=[0,0];streak=0;$("score").textContent="0";$("streak").textContent="0";show("game");$("extras").classList.add("hidden");if(runLabel==="مرحلة الزعيم")$("turnName").textContent="👑 مواجهة الزعيم — المرحلة "+selectedStage;render()}
+function render(){locked=false;if(runType!=="speed"||idx===0)t=runTime;$("timer").classList.remove("urgent");$("timer").textContent=t;$("num").textContent=(idx+1)+"/"+questionLimit;$("bar").style.width=(idx/questionLimit*100)+"%";$("question").textContent=qs[idx][0];$("feedback").textContent="اختر إجابة واحدة.";$("feedback").className="feedback"; $("next").classList.add("hidden");$("points").textContent=runType==="speed"?"متغير":cfg[diff].points;$("turnName").textContent=runLabel==="مرحلة الزعيم"?"👑 مواجهة الزعيم — المرحلة "+selectedStage:runType==="daily"?"📅 التحدي اليومي":runType==="speed"?"⚡ طور السرعة":mode===2?"دور: "+players[turn]:"اللاعب: "+players[0];$("score").textContent=mode===2?scores[0]+" - "+scores[1]:scores[0];$("streak").textContent=streak;$("answers").innerHTML="";
+qs[idx][1].forEach((a,n)=>{let b=document.createElement("button");b.style.setProperty("--i",n);b.className="answer";b.textContent=a;b.onclick=()=>answer(n);$("answers").appendChild(b)});
+if(runType!=="speed"||idx===0){clearInterval(timer);timer=setInterval(()=>{t--;$("timer").textContent=t;$("timer").classList.toggle("urgent",t<=5);if(t<=0){if(runType==="speed")finish();else answer(-1)}},1000)}}
+function explainQuestion(q,right){if(q.includes("العدد التالي")||q.includes("النمط")||q.includes("أكمل"))return "لاحظ النمط بين الأعداد؛ الإجابة الصحيحة تكمل التسلسل وفق القاعدة نفسها.";if(q.includes("نصف عدد")||q.includes("نصف العدد"))return "اعكس العملية الحسابية: أزل العدد المضاف أولاً ثم اضرب الناتج في اثنين.";if(q.includes("زوايا")||q.includes("زاوية"))return "تذكّر القاعدة الهندسية المرتبطة بعدد أضلاع الشكل.";if(q.includes("اليوم"))return "احسب الأيام المتبقية بعد تقسيم العدد على 7؛ أيام الأسبوع تتكرر كل سبعة أيام.";return "الإجابة الصحيحة هي «"+right+"». راجع المعطيات واستبعد الخيارات التي لا تحقق الشرط."}
+function answer(n){if(locked)return;locked=true;if(runType!=="speed")clearInterval(timer);let right=qs[idx][2];[...$("answers").children].forEach((b,k)=>{b.disabled=true;if(k===right)b.classList.add("correct");else if(k===n)b.classList.add("wrong")});
+if(n===right){let basePoints=runType==="speed"?5:cfg[diff].points;let skillBonus=(typeof v7Data==="function"?v7Data().skills.focus:0);scores[turn]+=basePoints+Math.round(basePoints*.05*skillBonus);streak++;$("feedback").textContent="إجابة صحيحة! ممتاز 🎉 التفسير: "+explainQuestion(qs[idx][0],qs[idx][1][right]);$("feedback").className="feedback good";beep(true)}else{streak=0;mistakes.push({q:qs[idx][0],chosen:n<0?"انتهى الوقت":qs[idx][1][n],correct:qs[idx][1][right],explain:qs[idx][3]||explainQuestion(qs[idx][0],qs[idx][1][right])});$("feedback").textContent=(n<0?"انتهى الوقت! ⏰":"إجابة غير صحيحة.")+" الصحيح: "+qs[idx][1][right]+" — "+explainQuestion(qs[idx][0],qs[idx][1][right]);$("feedback").className="feedback bad";beep(false)}
+$("score").textContent=mode===2?scores[0]+" - "+scores[1]:scores[0];$("streak").textContent=streak;$("next").textContent=idx===questionLimit-1?"عرض النتيجة":"السؤال التالي";$("next").classList.remove("hidden")}
+function next(){if(mode===2)turn=1-turn;idx++;if(idx>=questionLimit){finish();return}render()}
+function celebrate(){const colors=["#fbbf24","#60a5fa","#34d399","#f472b6","#c4b5fd"];for(let i=0;i<46;i++){const el=document.createElement("i");el.className="confetti";el.style.left=(Math.random()*100)+"vw";el.style.background=colors[i%colors.length];el.style.setProperty("--dx",(Math.random()*220-110)+"px");el.style.setProperty("--dur",(2+Math.random()*1.8)+"s");el.style.setProperty("--rot",(Math.random()*180)+"deg");document.body.appendChild(el);setTimeout(()=>el.remove(),4200)}}
+function finish(){clearInterval(timer);$("timer").classList.remove("urgent");$("bar").style.width="100%";let total=scores[0]+scores[1],d=getData(),max=runType==="speed"?questionLimit*5:cfg[diff].points*questionLimit;
+let percent=Math.round((scores[0]/max)*100),passed=mode===1&&runType==="stage"&&percent>=(selectedStage%10===0?80:60),stars=percent>=90?3:percent>=70?2:percent>=60?1:0;
+if(runType==="daily"){d.dailyDate=todayKey();d.dailyStreak++;d.coins+=25;d.totalPoints+=total;}else if(runType==="speed"){d.coins+=Math.max(1,Math.floor(scores[0]/10));d.totalPoints+=total;}else if(mode===1){let prog=d.stages[diff];if(passed){prog.stars[selectedStage]=Math.max(prog.stars[selectedStage]||0,stars);if(selectedStage<100)prog.unlocked=Math.max(prog.unlocked||1,selectedStage+1)}}
+if(runType==="stage"&&mode===1){let old=d.best[diff]||0;if(scores[0]>old)d.best[diff]=scores[0];d.board.push({name:players[0],score:scores[0],diff:cfg[diff].name,date:new Date().toLocaleDateString("ar")})}
+else if(runType==="daily"||runType==="speed"||runType==="tournament"){d.board.push({name:players[0],score:scores[0],diff:runType==="daily"?"التحدي اليومي":runType==="tournament"?"البطولة الأسبوعية":"طور السرعة",date:new Date().toLocaleDateString("ar")})}
+else{d.board.push({name:players[0]+" / "+players[1],score:total,diff:cfg[diff].name+" — لاعبان",date:new Date().toLocaleDateString("ar")})}
+d.board=d.board.sort((a,b)=>b.score-a.score).slice(0,8);
+if(runType==="stage"||runType==="tournament")d.totalPoints=(d.totalPoints||0)+total;d.coins+=(runType==="stage"&&passed?(selectedStage%10===0?30:10+selectedStage%10):0);d.mistakes=[...mistakes,...d.mistakes].slice(0,30);if(d.totalPoints>=500)d.titles=[...new Set([...d.titles,"مثابر"])];if(d.totalPoints>=1500)d.titles=[...new Set([...d.titles,"عبقري"])];d.rank=rankFor(d.totalPoints);
+let earned=[];if(scores[0]>0)earned.push("first");if(scores[0]>=max*.8)earned.push("expert");if(streak>=5)earned.push("streak");if(diff==="hard"&&scores[0]>=max*.5)earned.push("brave");d.achievements=[...new Set([...d.achievements,...earned])];saveData(d);
+$("finalScore").textContent=mode===2?scores[0]+" — "+scores[1]:scores[0]+" / "+max;
+$("resultText").textContent=mode===2?(scores[0]===scores[1]?"تعادل رائع!":scores[0]>scores[1]?"الفائز: "+players[0]+" 🏆":"الفائز: "+players[1]+" 🏆"):(scores[0]>=max*.8?"مذهل! أداء رائع جداً.":scores[0]>=max*.5?"أحسنت! واصل التدريب.":"بداية جيدة، حاول مرة أخرى.");
+$("recordText").textContent=runType==="daily"?"أكملت التحدي اليومي وحصلت على 25 عملة!":runType==="speed"?"انتهى طور السرعة — تم تحويل أدائك إلى عملات.":mode===1?(passed?"اجتزت "+(selectedStage%10===0?"الزعيم في المرحلة ":"المرحلة ")+selectedStage+" بنسبة "+percent+"% — "+"★".repeat(stars)+". "+(selectedStage===100?"أكملت جميع مراحل هذا المستوى!":"المرحلة التالية أصبحت متاحة."):"لم تجتز المرحلة بعد. تحتاج إلى "+(selectedStage%10===0?"80% لهزيمة الزعيم.":"60% لفتح المرحلة التالية.")):"تم حفظ نتيجة الجولة. تقدم المراحل مخصص للعب الفردي.";renderExtras(d);show("result");$("extras").classList.remove("hidden");if(mode===1&&scores[0]>=max*.5)celebrate()}
+function renderExtras(d=getData()){let defs=[["first","🌟 أول نقاط","أكمل جولة واحصل على نقاط"],["expert","🏆 عقل لامع","احصل على 80% أو أكثر"],["streak","🔥 سلسلة مميزة","أجب عن 5 أسئلة متتالية"],["brave","⚡ قلب شجاع","حقق نصف النقاط في المستوى الصعب"]];$("achievements").innerHTML=defs.map(x=>`<div class="achievement ${d.achievements.includes(x[0])?"":"locked"}"><b>${x[1]}</b><div class="mini">${x[2]}</div></div>`).join("");
+$("leaderboard").innerHTML=d.board.length?`<table><thead><tr><th>#</th><th>اللاعب</th><th>النقاط</th><th>المستوى</th></tr></thead><tbody>${d.board.map((r,i)=>`<tr><td>${i+1}</td><td>${escapeHTML(r.name)}</td><td>${r.score}</td><td>${r.diff}</td></tr>`).join("")}</tbody></table>`:"<p class='mini'>لا توجد نتائج محفوظة بعد. أكمل أول جولة لتظهر هنا.</p>"}
+
+function beginSpecial(type){clearInterval(timer);mode=1;runType=type;questionLimit=type==="daily"?5:10;runTime=type==="speed"?60:cfg[diff].time;runLabel=type==="daily"?"التحدي اليومي":"طور السرعة";players=[$("player1").value.trim()||"اللاعب الأول","اللاعب الثاني"];turn=0;qs=shuffle(banks[diff].concat(banks.medium,banks.hard)).slice(0,questionLimit);idx=0;scores=[0,0];streak=0;mistakes=[];$("score").textContent="0";$("streak").textContent="0";$("turnName").textContent=type==="daily"?"📅 التحدي اليومي":"⚡ طور السرعة";show("game");$("extras").classList.add("hidden");if(runLabel==="مرحلة الزعيم")$("turnName").textContent="👑 مواجهة الزعيم — المرحلة "+selectedStage;render()}
+function openReview(){let d=getData();let list=d.mistakes.slice(0,12);$("mistakeReview").innerHTML=list.length?list.map((m,i)=>`<div class="review-item"><b>${i+1}. ${escapeHTML(m.q)}</b><div class="mini" style="color:#fda4af">إجابتك: ${escapeHTML(m.chosen)}</div><div class="mini" style="color:#6ee7b7">الصحيح: ${escapeHTML(m.correct)}</div><div class="mini">💡 ${escapeHTML(m.explain)}</div></div>`).join(""):"<p class='mini'>رائع! لا توجد أخطاء محفوظة بعد.</p>";$("mistakeReview").scrollIntoView({behavior:"smooth",block:"center"})}
+const shop=[{type:"theme",id:"blue",name:"ثيم أزرق",cost:40,preview:"🔵"},{type:"theme",id:"purple",name:"ثيم بنفسجي",cost:40,preview:"🟣"},{type:"theme",id:"green",name:"ثيم زمردي",cost:40,preview:"🟢"},{type:"character",id:"🦊",name:"الثعلب الذكي",cost:60,preview:"🦊"},{type:"character",id:"🤖",name:"الروبوت",cost:60,preview:"🤖"},{type:"character",id:"🦉",name:"البومة",cost:80,preview:"🦉"}];
+function openShop(){let d=getData();let html=shop.map(x=>{let owned=x.type==="theme"?d.ownedThemes.includes(x.id):d.ownedCharacters.includes(x.id);return `<div class="shop-item"><div style="font-size:30px">${x.preview}</div><b>${x.name}</b><div class="coin">${x.cost} 🪙</div><button class="${owned?"utility":"primary"}" data-buy="${x.type}:${x.id}" ${owned?"disabled":""}>${owned?"مملوك":"شراء"}</button></div>`}).join("");let w=document.createElement("section");w.className="card";w.id="shopModal";w.innerHTML=`<div class="rowline"><h3 class="panel-title">🛍️ متجر المكافآت</h3><b class="coin">${d.coins} 🪙</b></div><div class="shop-grid">${html}</div><button class="secondary" id="closeShop" style="width:100%;margin-top:12px">إغلاق المتجر</button>`;let old=$("shopModal");if(old)old.remove();$("extras").after(w);w.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>buyItem(b.dataset.buy));$("closeShop").onclick=()=>w.remove();w.scrollIntoView({behavior:"smooth"})}
+function buyItem(key){let [type,id]=key.split(":"),x=shop.find(v=>v.type===type&&v.id===id),d=getData();if(!x)return;let arr=type==="theme"?d.ownedThemes:d.ownedCharacters;if(arr.includes(id)){if(type==="theme")d.theme=id;else d.character=id}else if(d.coins>=x.cost){d.coins-=x.cost;arr.push(id);if(type==="theme")d.theme=id;else d.character=id}else{alert("عملاتك غير كافية. أكمل التحديات لجمع المزيد!");return}saveData(d);let m=$("shopModal");if(m)m.remove();refreshHome();openShop()}
+function chooseTheme(id){let d=getData();if(!d.ownedThemes.includes(id)){alert("افتح هذا الثيم من المتجر أولاً.");return}d.theme=id;saveData(d);applyTheme();refreshHome()}
+
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function home(){clearInterval(timer);show("start");$("extras").classList.remove("hidden");refreshHome()}
+$("startBtn").onclick=start;$("next").onclick=next;$("again").onclick=start;$("home").onclick=home;$("quit").onclick=()=>{if(confirm("هل تريد إنهاء الجولة والعودة للرئيسية؟"))home()};
+$("soundBtn").onclick=()=>{sound=!sound;$("soundBtn").textContent=sound?"🔊 الصوت: تشغيل":"🔇 الصوت: إيقاف";$("soundBtn").setAttribute("aria-pressed",String(sound))};
+$("resetData").onclick=()=>{if(confirm("هل تريد مسح كل النتائج والإنجازات وتقدم المراحل؟")){localStorage.setItem(storeKey,JSON.stringify(freshData()));selectedStage=1;refreshHome()}};
+
+$("dailyBtn").onclick=()=>{let d=getData();if(d.dailyDate===todayKey()){alert("لقد أكملت التحدي اليومي بالفعل. عد غداً!");return}beginSpecial("daily")};
+$("speedBtn").onclick=()=>beginSpecial("speed");$("shopBtn").onclick=openShop;$("reviewBtn").onclick=openReview;
+$("themeGold").onclick=()=>chooseTheme("gold");$("themeBlue").onclick=()=>chooseTheme("blue");$("themePurple").onclick=()=>chooseTheme("purple");$("themeGreen").onclick=()=>chooseTheme("green");
+
+refreshHome();$("extras").classList.remove("hidden");$("modeSingle").style.borderColor="var(--gold)";
+</script>\n
+<script>
+/* V7 ULTIMATE: local progression systems layered over V6 */
+const v7Key="iqChallengeV7";
+function v7Fresh(){return {wins:0,played:0,correct:0,answered:0,duels:[],friends:[],skills:{focus:0,stamina:0,insight:0},skillPoints:0,collectibles:[],dailyClaim:"",weekKey:"",weeklyScore:0,weeklyRuns:0,missions:{daily:{},weekly:{}},lastDay:"",lastWeek:"",bossWins:0}}
+function v7Data(){let d;try{d=JSON.parse(localStorage.getItem(v7Key)||"null")}catch{};if(!d)d=v7Fresh();let f=v7Fresh();for(let k in f)if(d[k]===undefined)d[k]=f[k];d.skills=Object.assign(f.skills,d.skills||{});d.missions=Object.assign(f.missions,d.missions||{});d.missions.daily=d.missions.daily||{};d.missions.weekly=d.missions.weekly||{};return d}
+function v7Save(d){localStorage.setItem(v7Key,JSON.stringify(d));if(window.__firebaseQueueSave)window.__firebaseQueueSave()}
+function v7Day(){return todayKey()}
+function v7Week(){let x=new Date(),d=new Date(Date.UTC(x.getFullYear(),x.getMonth(),x.getDate()));d.setUTCDate(d.getUTCDate()+4-(d.getUTCDay()||7));let y=new Date(Date.UTC(d.getUTCFullYear(),0,1));return d.getUTCFullYear()+"-W"+String(Math.ceil((((d-y)/86400000)+1)/7)).padStart(2,"0")}
+function v7EnsurePeriods(d){let day=v7Day(),week=v7Week();if(d.lastDay!==day){d.lastDay=day;d.missions.daily={};}if(d.lastWeek!==week){d.lastWeek=week;d.weeklyScore=0;d.weeklyRuns=0;d.missions.weekly={};}return d}
+function v7Panel(html){$("v7Panel").innerHTML=html;$("v7Panel").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function v7Header(title,sub=""){return `<h3 class="panel-title">${title}</h3>${sub?`<p class="mini">${sub}</p>`:""}`}
+function v7RenderMap(){let d=v7Data(),prog=getData().stages;let regions=[{n:"غابة المنطق",e:"🌲",k:"easy",desc:"المراحل 1–100 · التفكير الأساسي"},{n:"مدينة الأرقام",e:"🏙️",k:"medium",desc:"المراحل 1–100 · الحساب والأنماط"},{n:"قلعة العباقرة",e:"🏰",k:"hard",desc:"المراحل 1–100 · التحديات المتقدمة"}];v7Panel(v7Header("🗺️ خريطة عالم الذكاء","افتح المناطق بالتقدم في مستوياتها. كل مرحلة عاشرة مواجهة زعيم.")+`<div class="v7-grid">${regions.map(r=>{let n=prog[r.k].unlocked||1;return `<div class="v7-tile"><div style="font-size:30px">${r.e}</div><b>${r.n}</b><div class="v7-muted">${r.desc}</div><div class="v7-progress"><i style="width:${n}%"></i></div><b>${n}/100</b><div class="v7-muted">${Math.floor((n-1)/10)} زعماء تم تجاوزهم تقريباً</div><button class="v7-action" data-region="${r.k}">استكشاف المنطقة</button></div>`}).join("")}</div>`);document.querySelectorAll("[data-region]").forEach(b=>b.onclick=()=>{diff=b.dataset.region;document.querySelectorAll(".diff").forEach(x=>x.classList.toggle("selected",x.dataset.diff===diff));selectedStage=getData().stages[diff].unlocked||1;refreshHome();$("start").scrollIntoView({behavior:"smooth"})})}
+function v7RenderTournament(){let d=v7EnsurePeriods(v7Data());v7Save(d);let target=250;v7Panel(v7Header("🏆 البطولة الأسبوعية","منافسة تجريبية محلية تُصفّر نقاطها أسبوعياً. ليست ترتيباً عالمياً.")+`<div class="stats"><div class="stat"><b>${d.weeklyScore}</b><span>نقاط الأسبوع</span></div><div class="stat"><b>${d.weeklyRuns}</b><span>جولات مكتملة</span></div><div class="stat"><b>${target}</b><span>هدف الأسبوع</span></div></div><div class="v7-progress"><i style="width:${Math.min(100,d.weeklyScore/target*100)}%"></i></div><p class="mini">المتبقي للهدف: ${Math.max(0,target-d.weeklyScore)} نقطة · الأسبوع ${v7Week()}</p><button class="v7-action" id="v7TournamentPlay">ابدأ جولة البطولة</button>`);$("v7TournamentPlay").onclick=()=>{beginSpecial("tournament");}}
+const v7Skills=[{id:"focus",name:"تركيز",icon:"🎯",desc:"يزيد نقاط الإجابة الصحيحة 5% لكل مستوى",cost:1,max:5},{id:"stamina",name:"ثبات",icon:"⏳",desc:"يمنح وقتاً إضافياً في المراحل العادية",cost:1,max:3},{id:"insight",name:"بصيرة",icon:"💡",desc:"يفتح تلميحات تدريبية في مراجعة الأخطاء",cost:1,max:3}];
+function v7RenderSkills(){let d=v7Data();v7Panel(v7Header("🌳 شجرة المهارات","اكسب نقطة مهارة عند كل فوز في مرحلة أو مواجهة.")+`<p class="coin">نقاط المهارة المتاحة: ${d.skillPoints}</p><div class="v7-grid">${v7Skills.map(s=>`<div class="v7-tile"><div style="font-size:27px">${s.icon}</div><b>${s.name} · ${d.skills[s.id]}/${s.max}</b><p class="v7-muted">${s.desc}</p><button class="v7-action" data-skill="${s.id}" ${d.skillPoints<1||d.skills[s.id]>=s.max?"disabled":""}>تطوير · ${s.cost} نقطة</button></div>`).join("")}</div>`);document.querySelectorAll("[data-skill]").forEach(b=>b.onclick=()=>{let x=v7Data(),id=b.dataset.skill;if(x.skillPoints>0&&x.skills[id]<v7Skills.find(s=>s.id===id).max){x.skillPoints--;x.skills[id]++;v7Save(x);v7RenderSkills()}})}
+function v7RenderProfile(){let d=v7Data(),g=getData(),name=$("player1").value.trim()||"اللاعب";let accuracy=d.answered?Math.round(d.correct/d.answered*100):0;v7Panel(v7Header("👤 ملف اللاعب الاحترافي",`مرحباً ${escapeHTML(name)} · ${g.character||"🧠"}`)+`<div class="stats"><div class="stat"><b>${g.totalPoints}</b><span>إجمالي النقاط</span></div><div class="stat"><b>${d.wins}</b><span>الانتصارات</span></div><div class="stat"><b>${accuracy}%</b><span>الدقة</span></div></div><div class="v7-row"><span>الرتبة</span><b>${rankNames[rankFor(g.totalPoints)]}</b></div><div class="v7-row"><span>العملات</span><b>${g.coins} 🪙</b></div><div class="v7-row"><span>المهارات المطوّرة</span><b>${Object.values(d.skills).reduce((a,b)=>a+b,0)}</b></div><div class="v7-row"><span>الزعماء المهزومون</span><b>${d.bossWins}</b></div><label class="mini" for="v7Rename">اسم العرض</label><input id="v7Rename" class="field" maxlength="16" value="${escapeHTML(name)}"><button class="v7-action" id="v7SaveName">حفظ الاسم</button>`);$("v7SaveName").onclick=()=>{let n=$("v7Rename").value.trim().slice(0,16);if(n){$("player1").value=n;v7RenderProfile();alert("تم تحديث اسم العرض على هذا الجهاز.")}}}
+function v7RenderDuel(){v7Panel(v7Header("⚔️ مواجهة 1 ضد 1","نمط محلي على الجهاز نفسه: يتناوب لاعبان على الإجابة. للمنافسة عبر الإنترنت نحتاج خادماً مشتركاً.")+`<label class="mini">اسم اللاعب الأول</label><input id="duelA" class="field" maxlength="16" value="${escapeHTML($("player1").value||"اللاعب الأول")}"><label class="mini">اسم اللاعب الثاني</label><input id="duelB" class="field" maxlength="16" value="${escapeHTML($("player2").value||"اللاعب الثاني")}"><button class="v7-action" id="v7StartDuel">بدء المواجهة</button><p class="mini">10 أسئلة بالتناوب · الفائز صاحب النقاط الأعلى.</p>`);$("v7StartDuel").onclick=()=>{$("player1").value=$("duelA").value.trim()||"اللاعب الأول";$("player2").value=$("duelB").value.trim()||"اللاعب الثاني";mode=2;$ ("modeDuo").click();start()}}
+function v7RenderMissions(){let d=v7EnsurePeriods(v7Data());v7Save(d);let daily=[{id:"play1",name:"أكمل جولة اليوم",goal:1,val:d.missions.daily.plays||0},{id:"correct5",name:"أجب عن 5 أسئلة بشكل صحيح",goal:5,val:d.missions.daily.correct||0},{id:"streak",name:"حقق 3 إجابات متتالية",goal:1,val:d.missions.daily.streak||0}],weekly=[{id:"runs",name:"أكمل 5 جولات هذا الأسبوع",goal:5,val:d.missions.weekly.runs||0},{id:"points",name:"اجمع 150 نقطة هذا الأسبوع",goal:150,val:d.missions.weekly.points||0}];function list(a,type){return a.map(m=>{let done=m.val>=m.goal,claimed=!!d.missions[type][m.id+"Claim"];return `<div class="v7-row"><div><b>${m.name}</b><div class="v7-muted">${Math.min(m.val,m.goal)}/${m.goal}</div></div><button class="v7-action" data-claim="${type}:${m.id}" ${!done||claimed?"disabled":""}>${claimed?"تم الاستلام":done?"استلام 10 🪙":"قيد التقدم"}</button></div>`}).join("")}v7Panel(v7Header("🎯 المهام","أكمل الأهداف واجمع العملات. تتجدد المهام تلقائياً حسب تاريخ الجهاز.")+`<b>مهام اليوم</b>${list(daily,"daily")}<br><b>مهام الأسبوع</b>${list(weekly,"weekly")}`);document.querySelectorAll("[data-claim]").forEach(b=>b.onclick=()=>{let [type,id]=b.dataset.claim.split(":"),x=v7Data();x.missions[type][id+"Claim"]=true;let base=getData();base.coins+=10;saveData(base);v7Save(x);v7RenderMissions();refreshHome()})}
+function v7RenderCollection(){let d=v7Data(),g=getData(),items=[{id:"firstwin",name:"أول انتصار",icon:"🥇",ok:d.wins>=1,desc:"أكمل أول مرحلة بنجاح"},{id:"boss",name:"صائد الزعماء",icon:"🐉",ok:d.bossWins>=1,desc:"اهزم أول زعيم"},{id:"accuracy",name:"عين الصقر",icon:"🎯",ok:d.answered>=20&&d.correct/d.answered>=.8,desc:"دقة 80% بعد 20 سؤالاً"},{id:"collector",name:"جامع العملات",icon:"💰",ok:g.coins>=100,desc:"اجمع 100 عملة"},{id:"duelist",name:"مبارز",icon:"⚔️",ok:d.duels.length>=1,desc:"أكمل مواجهة محلية"}];let newly=items.filter(x=>x.ok&&!d.collectibles.includes(x.id));if(newly.length){d.collectibles.push(...newly.map(x=>x.id));v7Save(d)}v7Panel(v7Header("💎 المقتنيات والشارات","افتح الشارات بإنجاز شروطها.")+`<div class="v7-grid">${items.map(x=>`<div class="v7-tile" style="opacity:${x.ok?1:.42}"><div style="font-size:30px">${x.ok?x.icon:"🔒"}</div><b>${x.name}</b><div class="v7-muted">${x.desc}</div><b>${x.ok?"مفتوحة ✓":"مقفلة"}</b></div>`).join("")}</div>`)}
+function v7RenderAnalytics(){let d=v7Data(),acc=d.answered?Math.round(d.correct/d.answered*100):0;let weak=acc>=80?"أداؤك متوازن؛ جرّب المستوى الأصعب.":acc>=55?"راجع الأسئلة التي أخطأت فيها وركّز على الأنماط الحسابية.":"ابدأ بالمستوى السهل وراجع تفسير كل إجابة قبل الانتقال.";v7Panel(v7Header("📊 تحليل الذكاء","التحليل مبني على نتائج الجولات المسجلة على هذا الجهاز.")+`<div class="stats"><div class="stat"><b>${d.answered}</b><span>أسئلة تمت</span></div><div class="stat"><b>${d.correct}</b><span>إجابات صحيحة</span></div><div class="stat"><b>${acc}%</b><span>الدقة العامة</span></div></div><div class="v7-progress"><i style="width:${acc}%"></i></div><p class="mini">${weak}</p><button class="v7-action" id="v7ReviewNow">افتح مراجعة الأخطاء</button>`);$("v7ReviewNow").onclick=openReview}
+function v7RenderFriends(){let d=v7Data();v7Panel(v7Header("🤝 قائمة الأصدقاء","قائمة محلية للتجربة؛ إضافة الاسم لا ترسل دعوة حقيقية أو تنشئ حساباً.")+`<div class="rowline"><input id="v7FriendName" class="field" maxlength="16" placeholder="اسم الصديق"><button class="v7-action" id="v7AddFriend">إضافة</button></div>${d.friends.length?d.friends.map((n,i)=>`<div class="v7-row"><span>🧑 ${escapeHTML(n)}</span><button class="secondary" data-remove-friend="${i}">حذف</button></div>`).join(""):"<p class='mini'>لم تضف أصدقاء بعد.</p>"}`);$("v7AddFriend").onclick=()=>{let n=$("v7FriendName").value.trim();if(!n)return;let x=v7Data();if(!x.friends.includes(n)&&x.friends.length<30)x.friends.push(n);v7Save(x);v7RenderFriends()};document.querySelectorAll("[data-remove-friend]").forEach(b=>b.onclick=()=>{let x=v7Data();x.friends.splice(+b.dataset.removeFriend,1);v7Save(x);v7RenderFriends()})}
+function v7Open(which){({map:v7RenderMap,tournament:v7RenderTournament,skills:v7RenderSkills,profile:v7RenderProfile,duel:v7RenderDuel,missions:v7RenderMissions,collection:v7RenderCollection,analytics:v7RenderAnalytics,friends:v7RenderFriends}[which]||v7RenderMap)()}
+document.querySelectorAll("[data-v7]").forEach(b=>b.addEventListener("click",()=>v7Open(b.dataset.v7)));
+/* Track completed sessions without changing the original V6 scoring flow. */
+const v6Finish=finish;
+finish=function(){let before=getData().totalPoints;v6Finish();let d=v7EnsurePeriods(v7Data()),g=getData(),rightCount=Math.max(0,questionLimit-mistakes.length),answered=questionLimit;d.played++;d.answered+=answered;d.correct+=rightCount;d.wins+=((runType==="stage"&&mode===1&&g.stages[diff].stars[selectedStage])?1:0);if(runType==="stage"&&mode===1&&selectedStage%10===0&&g.stages[diff].stars[selectedStage])d.bossWins++;if(mode===2){d.duels.push({a:players[0],b:players[1],score:scores.slice(),date:todayKey()});d.duels=d.duels.slice(-30)}d.skillPoints+=((runType==="stage"&&mode===1&&g.stages[diff].stars[selectedStage])?1:0);d.missions.daily.plays=(d.missions.daily.plays||0)+1;d.missions.daily.correct=(d.missions.daily.correct||0)+rightCount;d.missions.weekly.runs=(d.missions.weekly.runs||0)+1;d.missions.weekly.points=(d.missions.weekly.points||0)+scores.reduce((a,b)=>a+b,0);if(streak>=3)d.missions.daily.streak=1;d.weeklyRuns++;d.weeklyScore+=scores.reduce((a,b)=>a+b,0);v7Save(d)};
+/* Improve the boss identity: every tenth stage gets a dedicated title and reward label. */
+const v6Begin=beginSpecial;
+beginSpecial=function(type){v6Begin(type);if(type==="tournament"){$("turnName").textContent="🏆 جولة البطولة الأسبوعية";runType="tournament"}};
+const v6Start=start;
+start=function(){v6Start();if(runType==="stage"){let d=v7Data();if(d.skills.stamina>0){runTime+=d.skills.stamina*2;t=runTime;$("timer").textContent=t}}};
+/* Insight skill adds tailored coaching to the review panel. */
+const v6Review=openReview;
+openReview=function(){v6Review();let level=v7Data().skills.insight||0;if(level){let tip=document.createElement("p");tip.className="mini";tip.textContent="💡 بصيرة المستوى "+level+": حاول تحديد نوع السؤال أولاً، ثم استبعد الخيارات التي تخالف المعطيات قبل اختيار الإجابة.";$("mistakeReview").prepend(tip)}};
+/* V7-specific tournament score is included in weekly progress even for this special run. */
+refreshHome();
+</script>
+
+<div id="firebaseSyncBadge" dir="rtl" style="position:fixed;z-index:9999;bottom:12px;left:12px;max-width:calc(100vw - 24px);background:#18212f;color:#fff;border:1px solid #64748b;border-radius:14px;padding:9px 12px;font:13px Arial,sans-serif;box-shadow:0 4px 18px #0003">
+  <div id="firebaseSyncText">☁️ جارٍ الاتصال بالحفظ السحابي…</div>
+  <button id="firebaseSyncButton" type="button" style="margin-top:7px;border:0;border-radius:9px;padding:6px 10px;background:#f5c451;color:#241b08;font-weight:bold">مزامنة الآن</button>
+</div>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+  import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPLjFtSTOsexBhkOOgJSfQHVN0eB-lJ3I",
+    authDomain: "tahaddi-al-thaka.firebaseapp.com",
+    projectId: "tahaddi-al-thaka",
+    storageBucket: "tahaddi-al-thaka.firebasestorage.app",
+    messagingSenderId: "81830706931",
+    appId: "1:81830706931:web:4e3a4f43fe17cab5044186",
+    measurementId: "G-VBLM0E4L04"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const statusEl = document.getElementById("firebaseSyncText");
+  const syncButton = document.getElementById("firebaseSyncButton");
+  const MAIN_KEY = "iqChallengeV6";
+  const V7_KEY = "iqChallengeV7";
+  let currentUser = null;
+  let saveTimer = null;
+  let busy = false;
+
+  function status(message) {
+    if (statusEl) statusEl.textContent = message;
+  }
+
+  function localSnapshot() {
+    return {
+      main: localStorage.getItem(MAIN_KEY),
+      v7: localStorage.getItem(V7_KEY)
+    };
+  }
+
+  async function syncNow() {
+    if (!currentUser || busy) return;
+    busy = true;
+    status("☁️ جارٍ حفظ تقدمك على Firebase…");
+    try {
+      const ref = doc(db, "users", currentUser.uid, "gameSave", "main");
+      const data = localSnapshot();
+      await setDoc(ref, {
+        main: data.main,
+        v7: data.v7,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+      status("✅ تقدم اللعبة محفوظ سحابياً");
+    } catch (err) {
+      console.error("Firebase save error:", err);
+      status("⚠️ تعذّر الحفظ السحابي؛ تقدمك ما زال محفوظاً على هذا الجهاز");
+    } finally {
+      busy = false;
+    }
+  }
+
+  window.__firebaseQueueSave = function () {
+    if (!currentUser) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(syncNow, 900);
+  };
+
+  syncButton?.addEventListener("click", syncNow);
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) return;
+    currentUser = user;
+    status("☁️ تم الاتصال؛ جارٍ فحص الحفظ السابق…");
+    try {
+      const ref = doc(db, "users", user.uid, "gameSave", "main");
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        const cloud = snap.data();
+        if (typeof cloud.main === "string") localStorage.setItem(MAIN_KEY, cloud.main);
+        if (typeof cloud.v7 === "string") localStorage.setItem(V7_KEY, cloud.v7);
+        if (typeof window.refreshHome === "function") window.refreshHome();
+        status("✅ تم استرجاع تقدمك من السحابة");
+      } else {
+        await syncNow();
+      }
+    } catch (err) {
+      console.error("Firebase load error:", err);
+      status("⚠️ تعذّر تحميل السحابة؛ سنُبقي الحفظ المحلي فعالاً");
+    }
+  });
+
+  signInAnonymously(auth).catch((err) => {
+    console.error("Firebase anonymous sign-in error:", err);
+    status("⚠️ فعّل تسجيل الدخول المجهول في Firebase Authentication");
+  });
+</script>
+
+</body></html>
