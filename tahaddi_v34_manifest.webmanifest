@@ -1,0 +1,16 @@
+{
+  "name": "تحدّي الذكاء V34",
+  "short_name": "تحدّي الذكاء",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#10142f",
+  "theme_color": "#6758f5",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
